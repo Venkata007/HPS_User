@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BuyInsCell" id="gTV-IL-0wX" customClass="BuyInsCell" customModule="HPS_User" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-CZ-7Un">
+                        <rect key="frame" x="10" y="6.5" width="11.5" height="17"/>
+                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                        <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v4-LP-cVj">
+                        <rect key="frame" x="132" y="6.5" width="36.5" height="17"/>
+                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                        <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-Fd-hVv">
+                        <rect key="frame" x="249" y="6.5" width="41" height="17"/>
+                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                        <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.87811321019999999" green="0.88628846409999995" blue="0.89034181830000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hTS-CZ-7Un" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="5Ze-wk-Q66"/>
+                <constraint firstAttribute="trailing" secondItem="5nH-Fd-hVv" secondAttribute="trailing" constant="10" id="DEu-zd-r80"/>
+                <constraint firstItem="hTS-CZ-7Un" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JHA-7w-tVe"/>
+                <constraint firstItem="5nH-Fd-hVv" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="Jet-Nb-70F"/>
+                <constraint firstItem="4v4-LP-cVj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nmq-wX-fnf"/>
+                <constraint firstItem="4v4-LP-cVj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xuX-nB-QLo"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="299" height="39"/>
+            <connections>
+                <outlet property="amountLbl" destination="5nH-Fd-hVv" id="Blm-Cy-CdX"/>
+                <outlet property="serialNoLbl" destination="hTS-CZ-7Un" id="eCr-Ki-bB6"/>
+                <outlet property="timeLbl" destination="4v4-LP-cVj" id="aOb-MG-58z"/>
+            </connections>
+            <point key="canvasLocation" x="150.40000000000001" y="151.12443778110946"/>
+        </collectionViewCell>
+    </objects>
+</document>
