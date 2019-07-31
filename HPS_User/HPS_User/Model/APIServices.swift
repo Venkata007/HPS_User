@@ -25,18 +25,17 @@ class APIServices: NSObject {
     // MARK : - Get Api hitting Model
     class func getUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
         _ = params.printData
-        Alamofire.request(urlString,method: .get, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
-            _ = response.printData
+        Alamofire.request(urlString,method: .get, parameters: params, headers: header).responseJSON { (response) in
+            // _ = response.printData
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    let dic        = response.result.value as! [String : AnyObject]
+                    _        = response.result.value as! [String : AnyObject]
                     let stautsCode = response.response?.statusCode
-                    let message    = dic[ApiParams.Message] as! String
                     if (stautsCode)! >= 200 && (stautsCode)! < 300{
                         completionHandler(response)
                     }else{
-                        TheGlobalPoolManager.showToastView(message)
+                        TheGlobalPoolManager.showToastView("No Data Available")
                         TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
                     }
                 }

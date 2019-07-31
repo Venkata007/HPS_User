@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 let SERVER_IP            = "https://us-central1-home-poker-squad-hps.cloudfunctions.net"
+let Auth_Key              = "vYv6I6g2XoC3So3FcuullGwdJrFXss9V2lPJZ3r9"
 let USER_INFO          =  "user_info"
- let User                      =  "user"
+ let USER                     =  "user"
+let STATUS                 = "status"
+let MESSAGE             = "message"
 
 public struct Constants {
     static let AppName                = "HPS_User"
@@ -22,9 +25,13 @@ public struct Constants {
 }
 //MARK : - ViewController IDs
 public  struct ViewControllerIDs {
-    static let LoginViewController                   = "LoginViewController"
-    static let RegisterViewController              = "RegisterViewController"
-    static let HomeViewController                  = "HomeViewController"
+    static let LoginViewController                       = "LoginViewController"
+    static let RegisterViewController                  = "RegisterViewController"
+    static let HomeViewController                      = "HomeViewController"
+    static let CompletedEventsViewController = "CompletedEventsViewController"
+    static let UpComingEventsVC                        = "UpComingEventsVC"
+    static let BuyInsViewController                      = "BuyInsViewController"
+    static let BookSeatViewController                 = "BookSeatViewController"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -34,10 +41,15 @@ public struct DeviceInfo {
 }
 //MARK : - All Apis
 public struct ApiURls{
-    static let User_Referral_Verify                        = "\(SERVER_IP)/userReferralVerify"
-    static let Register_User                                    = "\(SERVER_IP)/registerUser"
-    static let Login_User                                        = "\(SERVER_IP)/login"
+    static let User_Referral_Verify                    = "\(SERVER_IP)/userReferralVerify"
+    static let Register_User                               = "\(SERVER_IP)/registerUser"
+    static let Login_User                                    = "\(SERVER_IP)/login"
+    static let User_Home                                   = "\(SERVER_IP)/userHome"
+    static let Get_All_Events                             = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)"
+    static let Get_All_Bookings                        = "https://home-poker-squad-hps.firebaseio.com/bookingsTable/.json?auth=\(Auth_Key)"
+    static let  Book_Seat                                    = "\(SERVER_IP)/bookSeat"
 }
+
 // MARK : - Toast Messages
 public struct ToastMessages {
     static let  Unable_To_Sign_UP          = "Unable to register now, Please try again...😞"
@@ -68,8 +80,10 @@ public struct ToastMessages {
 }
 //MARK:- XIB Names
 public struct XIBNames{
-    static let NewEventTableViewCell               =      "NewEventTableViewCell"
-    static let BuyInsTableViewCell                     =       "BuyInsTableViewCell"
+    static let EventsTableViewCell                     =  "EventsTableViewCell"
+    static let BuyInsTableViewCell                     =  "BuyInsTableViewCell"
+    static let CompletedEventsCell                   =  "CompletedEventsCell"
+    static let BuyInsDetailCell                             = "BuyInsDetailCell"
 }
 //MARK:- Api Paramaters
 public struct ApiParams  {
@@ -84,5 +98,9 @@ public struct ApiParams  {
     static let DeviceId = "deviceId"
     static let Password = "password"
     static let UserType = "type"
+    static let User = "user"
+    static let UserId = "userId"
+    static let EventId = "eventId"
+    static let BookFromBlockedSeats = "bookFromBlockedSeats"
+    static let UserJoinTime = "userJoinTime"
 }
-

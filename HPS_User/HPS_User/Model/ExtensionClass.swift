@@ -98,6 +98,12 @@ extension UIColor{
     static var textFieldTintColor:UIColor{
         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) //FFFFFF
     }
+    static var borderColor:UIColor{
+        return #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288)
+    }
+    static var yellowColor:UIColor{
+        return #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1)
+    }
 }
 //MARK:- UIFont
 extension UIFont{
@@ -261,6 +267,16 @@ extension UIDevice {
             return .iPhone_XSMax
         default:
             return .unknown
+        }
+    }
+}
+extension UITextField{
+    @IBInspectable var placeHolderColor: UIColor? {
+        get {
+            return self.placeHolderColor
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
         }
     }
 }

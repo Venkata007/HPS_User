@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BuyInsDetailCell" id="KGk-i7-Jjw" customClass="BuyInsDetailCell" customModule="HPS_User" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-cW-ay2">
+                        <rect key="frame" x="10" y="10" width="300" height="179.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrO-d6-zjZ">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKz-uc-fOu">
+                                        <rect key="frame" x="86" y="11.5" width="128" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                        <color key="textColor" red="0.78039215689999997" green="0.62352941179999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11th Tue Jul 12:00pm" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9v-BL-z2N">
+                                        <rect key="frame" x="222" y="5.5" width="70" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="pDV-Ce-ga8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coins" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-jJ-Pum">
+                                        <rect key="frame" x="8" y="14" width="12" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="eHL-Qo-IZa"/>
+                                            <constraint firstAttribute="width" constant="12" id="rU4-H2-OWT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2112" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGy-V0-NFz">
+                                        <rect key="frame" x="22" y="13" width="28" height="14.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60327482880000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dKz-uc-fOu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HGy-V0-NFz" secondAttribute="trailing" constant="8" id="6iF-5f-aZB"/>
+                                    <constraint firstItem="0vr-jJ-Pum" firstAttribute="leading" secondItem="qrO-d6-zjZ" secondAttribute="leading" constant="8" id="CM7-35-CM9"/>
+                                    <constraint firstItem="dKz-uc-fOu" firstAttribute="centerY" secondItem="qrO-d6-zjZ" secondAttribute="centerY" id="CdE-K1-bnJ"/>
+                                    <constraint firstItem="HGy-V0-NFz" firstAttribute="leading" secondItem="0vr-jJ-Pum" secondAttribute="trailing" constant="2" id="HRF-rW-4cu"/>
+                                    <constraint firstAttribute="trailing" secondItem="n9v-BL-z2N" secondAttribute="trailing" constant="8" id="Nu9-1G-aDA"/>
+                                    <constraint firstItem="0vr-jJ-Pum" firstAttribute="centerY" secondItem="dKz-uc-fOu" secondAttribute="centerY" id="QEl-aQ-xbJ"/>
+                                    <constraint firstItem="HGy-V0-NFz" firstAttribute="centerY" secondItem="0vr-jJ-Pum" secondAttribute="centerY" id="TPb-dk-Jn5"/>
+                                    <constraint firstItem="n9v-BL-z2N" firstAttribute="leading" secondItem="dKz-uc-fOu" secondAttribute="trailing" constant="8" id="cR4-mM-Pxh"/>
+                                    <constraint firstItem="dKz-uc-fOu" firstAttribute="centerX" secondItem="qrO-d6-zjZ" secondAttribute="centerX" id="fna-B1-peO"/>
+                                    <constraint firstAttribute="height" constant="40" id="hCh-hr-FxR"/>
+                                    <constraint firstItem="n9v-BL-z2N" firstAttribute="centerY" secondItem="dKz-uc-fOu" secondAttribute="centerY" id="ihc-KZ-HSb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyp-25-NZ5">
+                                <rect key="frame" x="0.0" y="41" width="300" height="138.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAL-CT-qmy">
+                                        <rect key="frame" x="10" y="0.0" width="280" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="we5-cE-y0H">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="80"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XpQ-Qx-vkv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="26.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy In's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-IQ-lW6">
+                                                                <rect key="frame" x="5" y="5" width="48" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4q-YA-yjs">
+                                                                <rect key="frame" x="231" y="5" width="44" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="P4q-YA-yjs" secondAttribute="trailing" constant="5" id="3Ei-rC-oMD"/>
+                                                            <constraint firstItem="P4q-YA-yjs" firstAttribute="centerY" secondItem="XpQ-Qx-vkv" secondAttribute="centerY" id="7GU-vw-qHp"/>
+                                                            <constraint firstItem="dOk-IQ-lW6" firstAttribute="leading" secondItem="XpQ-Qx-vkv" secondAttribute="leading" constant="5" id="JdR-J0-HQm"/>
+                                                            <constraint firstItem="dOk-IQ-lW6" firstAttribute="centerY" secondItem="XpQ-Qx-vkv" secondAttribute="centerY" id="Pcf-Hl-Ydf"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2T0-th-lcQ">
+                                                        <rect key="frame" x="0.0" y="26.5" width="280" height="27"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctj-KW-o6T">
+                                                                <rect key="frame" x="5" y="5" width="58" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY1-2h-iFe">
+                                                                <rect key="frame" x="231" y="5" width="44" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="cY1-2h-iFe" secondAttribute="trailing" constant="5" id="046-Do-ZVk"/>
+                                                            <constraint firstItem="ctj-KW-o6T" firstAttribute="centerY" secondItem="2T0-th-lcQ" secondAttribute="centerY" id="IUd-8O-GcK"/>
+                                                            <constraint firstItem="ctj-KW-o6T" firstAttribute="leading" secondItem="2T0-th-lcQ" secondAttribute="leading" constant="5" id="jEB-ha-Ijf"/>
+                                                            <constraint firstItem="cY1-2h-iFe" firstAttribute="centerY" secondItem="2T0-th-lcQ" secondAttribute="centerY" id="o3E-2c-1HA"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r53-36-03h">
+                                                        <rect key="frame" x="0.0" y="53.5" width="280" height="26.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-On-ac7">
+                                                                <rect key="frame" x="5" y="4.5" width="30.5" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eol-07-O67">
+                                                                <rect key="frame" x="231" y="4.5" width="44" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="dWp-On-ac7" firstAttribute="leading" secondItem="r53-36-03h" secondAttribute="leading" constant="5" id="8ZD-Oi-aXR"/>
+                                                            <constraint firstItem="dWp-On-ac7" firstAttribute="centerY" secondItem="r53-36-03h" secondAttribute="centerY" id="Dc1-9C-YmJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Eol-07-O67" secondAttribute="trailing" constant="5" id="Dks-gB-z9G"/>
+                                                            <constraint firstItem="Eol-07-O67" firstAttribute="centerY" secondItem="r53-36-03h" secondAttribute="centerY" id="GK5-4S-WTy"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="we5-cE-y0H" firstAttribute="width" secondItem="GAL-CT-qmy" secondAttribute="width" id="4gE-fk-qym"/>
+                                            <constraint firstAttribute="height" constant="80" id="KnH-Ch-8CH"/>
+                                            <constraint firstItem="we5-cE-y0H" firstAttribute="height" secondItem="GAL-CT-qmy" secondAttribute="height" id="R7H-1A-1gc"/>
+                                            <constraint firstItem="we5-cE-y0H" firstAttribute="centerX" secondItem="GAL-CT-qmy" secondAttribute="centerX" id="SHs-ZO-4Fj"/>
+                                            <constraint firstItem="we5-cE-y0H" firstAttribute="centerY" secondItem="GAL-CT-qmy" secondAttribute="centerY" id="e5N-3E-wDp"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy In's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKG-6g-RXB">
+                                        <rect key="frame" x="15" y="88" width="52" height="18"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" red="0.91992014649999998" green="0.97659760709999999" blue="0.98513370749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 1500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL3-nv-glt">
+                                        <rect key="frame" x="237.5" y="88" width="47.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" red="0.78039215689999997" green="0.62352941179999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Twc-a8-f4b">
+                                        <rect key="frame" x="15" y="111" width="270" height="22.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h5d-6n-psT">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GAL-CT-qmy" firstAttribute="leading" secondItem="xyp-25-NZ5" secondAttribute="leading" constant="10" id="9HS-j3-n5Q"/>
+                                    <constraint firstItem="Twc-a8-f4b" firstAttribute="trailing" secondItem="QL3-nv-glt" secondAttribute="trailing" id="AsG-Lk-KOO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Twc-a8-f4b" secondAttribute="bottom" constant="5" id="JPn-Nq-buU"/>
+                                    <constraint firstItem="QKG-6g-RXB" firstAttribute="top" secondItem="GAL-CT-qmy" secondAttribute="bottom" constant="8" id="QCN-6G-B3S"/>
+                                    <constraint firstItem="Twc-a8-f4b" firstAttribute="top" secondItem="QKG-6g-RXB" secondAttribute="bottom" constant="5" id="QME-3q-arQ"/>
+                                    <constraint firstItem="QL3-nv-glt" firstAttribute="centerY" secondItem="QKG-6g-RXB" secondAttribute="centerY" id="VsX-EK-9bA"/>
+                                    <constraint firstItem="Twc-a8-f4b" firstAttribute="leading" secondItem="QKG-6g-RXB" secondAttribute="leading" id="bJH-A0-Ms3"/>
+                                    <constraint firstAttribute="trailing" secondItem="GAL-CT-qmy" secondAttribute="trailing" constant="10" id="blR-It-7Xg"/>
+                                    <constraint firstItem="GAL-CT-qmy" firstAttribute="top" secondItem="xyp-25-NZ5" secondAttribute="top" id="cUQ-Lu-994"/>
+                                    <constraint firstItem="QL3-nv-glt" firstAttribute="trailing" secondItem="Eol-07-O67" secondAttribute="trailing" id="njd-ln-Hun"/>
+                                    <constraint firstItem="QKG-6g-RXB" firstAttribute="leading" secondItem="dWp-On-ac7" secondAttribute="leading" id="s7m-jA-fQ3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qrO-d6-zjZ" firstAttribute="top" secondItem="w6W-cW-ay2" secondAttribute="top" id="PCu-NV-Dna"/>
+                            <constraint firstAttribute="trailing" secondItem="qrO-d6-zjZ" secondAttribute="trailing" id="PXh-VE-2xN"/>
+                            <constraint firstItem="xyp-25-NZ5" firstAttribute="trailing" secondItem="qrO-d6-zjZ" secondAttribute="trailing" id="Vah-4j-k1d"/>
+                            <constraint firstAttribute="bottom" secondItem="xyp-25-NZ5" secondAttribute="bottom" id="mZe-up-bBZ"/>
+                            <constraint firstItem="xyp-25-NZ5" firstAttribute="top" secondItem="qrO-d6-zjZ" secondAttribute="bottom" constant="1" id="o5R-jt-21V"/>
+                            <constraint firstItem="qrO-d6-zjZ" firstAttribute="leading" secondItem="w6W-cW-ay2" secondAttribute="leading" id="rSc-BU-365"/>
+                            <constraint firstItem="xyp-25-NZ5" firstAttribute="leading" secondItem="qrO-d6-zjZ" secondAttribute="leading" id="zBu-dA-RbY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="w6W-cW-ay2" secondAttribute="bottom" constant="10" id="Kyp-ug-DUQ"/>
+                    <constraint firstItem="w6W-cW-ay2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OzR-hn-eMx"/>
+                    <constraint firstItem="w6W-cW-ay2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="e9T-zk-REh"/>
+                    <constraint firstAttribute="trailing" secondItem="w6W-cW-ay2" secondAttribute="trailing" constant="10" id="f5j-mS-33T"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="buyInsLbl" destination="P4q-YA-yjs" id="ffY-Yh-0Ac"/>
+                <outlet property="buyInsTextLbl" destination="QL3-nv-glt" id="Ktq-2Z-hIc"/>
+                <outlet property="buyInsTitleLbl" destination="QKG-6g-RXB" id="Mcq-VL-5sg"/>
+                <outlet property="cashOutLbl" destination="cY1-2h-iFe" id="Ug6-de-mAr"/>
+                <outlet property="collectionView" destination="Twc-a8-f4b" id="Ipn-7R-aXz"/>
+                <outlet property="dateLbl" destination="n9v-BL-z2N" id="I3b-YA-owK"/>
+                <outlet property="eventNameLbl" destination="dKz-uc-fOu" id="A0D-Kg-ppx"/>
+                <outlet property="headerView" destination="qrO-d6-zjZ" id="08J-EV-Y5f"/>
+                <outlet property="pointslbl" destination="HGy-V0-NFz" id="Cwh-9B-nXZ"/>
+                <outlet property="totalLbl" destination="Eol-07-O67" id="3xr-bk-E3k"/>
+                <outlet property="viewInView" destination="xyp-25-NZ5" id="ISd-Up-L7l"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Coins" width="171" height="171"/>
+    </resources>
+</document>

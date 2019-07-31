@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		44DC2425DF59107C1B15050A /* Pods_HPS_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42E3432ED5707CDABF16269 /* Pods_HPS_User.framework */; };
-		A33D766022CF53ED00F0A6DC /* NewEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D765E22CF53ED00F0A6DC /* NewEventTableViewCell.swift */; };
-		A33D766122CF53ED00F0A6DC /* NewEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33D765F22CF53ED00F0A6DC /* NewEventTableViewCell.xib */; };
+		A318658322F03F360015A1A8 /* SelectSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318658122F03F360015A1A8 /* SelectSlotView.swift */; };
+		A318658422F03F360015A1A8 /* SelectSlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A318658222F03F360015A1A8 /* SelectSlotView.xib */; };
+		A318658B22F040DC0015A1A8 /* SlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318658922F040DC0015A1A8 /* SlotCell.swift */; };
+		A318658C22F040DC0015A1A8 /* SlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A318658A22F040DC0015A1A8 /* SlotCell.xib */; };
 		A33D766422CF77C700F0A6DC /* BuyInsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D766222CF77C700F0A6DC /* BuyInsTableViewCell.swift */; };
 		A33D766522CF77C700F0A6DC /* BuyInsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33D766322CF77C700F0A6DC /* BuyInsTableViewCell.xib */; };
 		A33D766922D30A8700F0A6DC /* BuyInsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D766722D30A8700F0A6DC /* BuyInsCell.swift */; };
@@ -43,6 +45,19 @@
 		A3407BA322CC733900153704 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3407B9A22CC733800153704 /* Lato-BoldItalic.ttf */; };
 		A3407BA422CC733900153704 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3407B9B22CC733800153704 /* Lato-Medium.ttf */; };
 		A3407BA622CC752100153704 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3407BA522CC752100153704 /* LoginViewController.swift */; };
+		A35C82C722EEC01B000EDE60 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82C522EEC01B000EDE60 /* EventsTableViewCell.swift */; };
+		A35C82C822EEC01B000EDE60 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A35C82C622EEC01B000EDE60 /* EventsTableViewCell.xib */; };
+		A35C82CA22EEEC9F000EDE60 /* CompletedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82C922EEEC9F000EDE60 /* CompletedEventsViewController.swift */; };
+		A35C82CD22EEF679000EDE60 /* CompletedEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82CB22EEF679000EDE60 /* CompletedEventsCell.swift */; };
+		A35C82CE22EEF679000EDE60 /* CompletedEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A35C82CC22EEF679000EDE60 /* CompletedEventsCell.xib */; };
+		A35C82D022EEFC27000EDE60 /* UpComingEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82CF22EEFC27000EDE60 /* UpComingEventsVC.swift */; };
+		A35C82D222EEFFD3000EDE60 /* BuyInsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82D122EEFFD3000EDE60 /* BuyInsViewController.swift */; };
+		A35C82D922EF0230000EDE60 /* BuyInsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82D722EF0230000EDE60 /* BuyInsDetailCell.swift */; };
+		A35C82DA22EF0230000EDE60 /* BuyInsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A35C82D822EF0230000EDE60 /* BuyInsDetailCell.xib */; };
+		A35C82DC22EF0471000EDE60 /* UserHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82DB22EF0471000EDE60 /* UserHomeModel.swift */; };
+		A35C82DE22F00699000EDE60 /* EventsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82DD22F00699000EDE60 /* EventsListModel.swift */; };
+		A35C82E022F01209000EDE60 /* GetAllBookingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82DF22F01209000EDE60 /* GetAllBookingsModel.swift */; };
+		A35C82E222F02021000EDE60 /* BookSeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C82E122F02021000EDE60 /* BookSeatViewController.swift */; };
 		A39AF64A22CCA3040049F1B2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39AF64922CCA3040049F1B2 /* RegisterViewController.swift */; };
 		A39AF64E22CDF1AF0049F1B2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A39AF64C22CDF1AF0049F1B2 /* MBProgressHUD.m */; };
 		A39AF65022CDFC570049F1B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A39AF64F22CDFC570049F1B2 /* GoogleService-Info.plist */; };
@@ -52,8 +67,10 @@
 
 /* Begin PBXFileReference section */
 		04D6758B8382D5A7B3766884 /* Pods-HPS_User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HPS_User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HPS_User/Pods-HPS_User.debug.xcconfig"; sourceTree = "<group>"; };
-		A33D765E22CF53ED00F0A6DC /* NewEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventTableViewCell.swift; sourceTree = "<group>"; };
-		A33D765F22CF53ED00F0A6DC /* NewEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewEventTableViewCell.xib; sourceTree = "<group>"; };
+		A318658122F03F360015A1A8 /* SelectSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSlotView.swift; sourceTree = "<group>"; };
+		A318658222F03F360015A1A8 /* SelectSlotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectSlotView.xib; sourceTree = "<group>"; };
+		A318658922F040DC0015A1A8 /* SlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotCell.swift; sourceTree = "<group>"; };
+		A318658A22F040DC0015A1A8 /* SlotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotCell.xib; sourceTree = "<group>"; };
 		A33D766222CF77C700F0A6DC /* BuyInsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsTableViewCell.swift; sourceTree = "<group>"; };
 		A33D766322CF77C700F0A6DC /* BuyInsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyInsTableViewCell.xib; sourceTree = "<group>"; };
 		A33D766722D30A8700F0A6DC /* BuyInsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsCell.swift; sourceTree = "<group>"; };
@@ -94,6 +111,19 @@
 		A3407B9A22CC733800153704 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A3407B9B22CC733800153704 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		A3407BA522CC752100153704 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A35C82C522EEC01B000EDE60 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		A35C82C622EEC01B000EDE60 /* EventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
+		A35C82C922EEEC9F000EDE60 /* CompletedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventsViewController.swift; sourceTree = "<group>"; };
+		A35C82CB22EEF679000EDE60 /* CompletedEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventsCell.swift; sourceTree = "<group>"; };
+		A35C82CC22EEF679000EDE60 /* CompletedEventsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompletedEventsCell.xib; sourceTree = "<group>"; };
+		A35C82CF22EEFC27000EDE60 /* UpComingEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventsVC.swift; sourceTree = "<group>"; };
+		A35C82D122EEFFD3000EDE60 /* BuyInsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsViewController.swift; sourceTree = "<group>"; };
+		A35C82D722EF0230000EDE60 /* BuyInsDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsDetailCell.swift; sourceTree = "<group>"; };
+		A35C82D822EF0230000EDE60 /* BuyInsDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyInsDetailCell.xib; sourceTree = "<group>"; };
+		A35C82DB22EF0471000EDE60 /* UserHomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHomeModel.swift; sourceTree = "<group>"; };
+		A35C82DD22F00699000EDE60 /* EventsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListModel.swift; sourceTree = "<group>"; };
+		A35C82DF22F01209000EDE60 /* GetAllBookingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllBookingsModel.swift; sourceTree = "<group>"; };
+		A35C82E122F02021000EDE60 /* BookSeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSeatViewController.swift; sourceTree = "<group>"; };
 		A39AF64922CCA3040049F1B2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A39AF64C22CDF1AF0049F1B2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A39AF64D22CDF1AF0049F1B2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -133,13 +163,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A318658022F03EEB0015A1A8 /* XIBS */ = {
+			isa = PBXGroup;
+			children = (
+				A318658122F03F360015A1A8 /* SelectSlotView.swift */,
+				A318658222F03F360015A1A8 /* SelectSlotView.xib */,
+				A318658922F040DC0015A1A8 /* SlotCell.swift */,
+				A318658A22F040DC0015A1A8 /* SlotCell.xib */,
+			);
+			path = XIBS;
+			sourceTree = "<group>";
+		};
 		A33D765D22CF52E800F0A6DC /* Table View XIBS */ = {
 			isa = PBXGroup;
 			children = (
-				A33D765E22CF53ED00F0A6DC /* NewEventTableViewCell.swift */,
-				A33D765F22CF53ED00F0A6DC /* NewEventTableViewCell.xib */,
+				A35C82C522EEC01B000EDE60 /* EventsTableViewCell.swift */,
+				A35C82C622EEC01B000EDE60 /* EventsTableViewCell.xib */,
 				A33D766222CF77C700F0A6DC /* BuyInsTableViewCell.swift */,
 				A33D766322CF77C700F0A6DC /* BuyInsTableViewCell.xib */,
+				A35C82CB22EEF679000EDE60 /* CompletedEventsCell.swift */,
+				A35C82CC22EEF679000EDE60 /* CompletedEventsCell.xib */,
+				A35C82D722EF0230000EDE60 /* BuyInsDetailCell.swift */,
+				A35C82D822EF0230000EDE60 /* BuyInsDetailCell.xib */,
 			);
 			path = "Table View XIBS";
 			sourceTree = "<group>";
@@ -177,6 +222,7 @@
 				A3407B9122CC733800153704 /* Resources */,
 				A3407B5322CB670300153704 /* Third Party */,
 				A3407B1022CB655400153704 /* Model */,
+				A318658022F03EEB0015A1A8 /* XIBS */,
 				A33D765D22CF52E800F0A6DC /* Table View XIBS */,
 				A33D766622D309F000F0A6DC /* Collection View XIBS */,
 				A3407B0B22CB64A400153704 /* ViewControllers */,
@@ -198,6 +244,10 @@
 				A3407BA522CC752100153704 /* LoginViewController.swift */,
 				A39AF64922CCA3040049F1B2 /* RegisterViewController.swift */,
 				A39AF65522CE01F00049F1B2 /* HomeViewController.swift */,
+				A35C82CF22EEFC27000EDE60 /* UpComingEventsVC.swift */,
+				A35C82C922EEEC9F000EDE60 /* CompletedEventsViewController.swift */,
+				A35C82D122EEFFD3000EDE60 /* BuyInsViewController.swift */,
+				A35C82E122F02021000EDE60 /* BookSeatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +271,9 @@
 			children = (
 				A3407B1A22CB655400153704 /* SingleTonClass.swift */,
 				A39AF65122CDFF830049F1B2 /* LoginModel.swift */,
+				A35C82DB22EF0471000EDE60 /* UserHomeModel.swift */,
+				A35C82DD22F00699000EDE60 /* EventsListModel.swift */,
+				A35C82DF22F01209000EDE60 /* GetAllBookingsModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -362,10 +415,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35C82C822EEC01B000EDE60 /* EventsTableViewCell.xib in Resources */,
+				A35C82CE22EEF679000EDE60 /* CompletedEventsCell.xib in Resources */,
+				A35C82DA22EF0230000EDE60 /* BuyInsDetailCell.xib in Resources */,
 				A39AF65022CDFC570049F1B2 /* GoogleService-Info.plist in Resources */,
 				A3407BA022CC733900153704 /* Lato-BlackItalic.ttf in Resources */,
 				A33D766522CF77C700F0A6DC /* BuyInsTableViewCell.xib in Resources */,
 				A3407BA422CC733900153704 /* Lato-Medium.ttf in Resources */,
+				A318658422F03F360015A1A8 /* SelectSlotView.xib in Resources */,
 				A3407B0422CB645200153704 /* LaunchScreen.storyboard in Resources */,
 				A3407BA122CC733900153704 /* Lato-Semibold.ttf in Resources */,
 				A3407B9D22CC733900153704 /* Lato-Bold.ttf in Resources */,
@@ -377,7 +434,7 @@
 				A3407AFF22CB645100153704 /* Main.storyboard in Resources */,
 				A3407B9E22CC733900153704 /* Lato-SemiboldItalic.ttf in Resources */,
 				A3407BA222CC733900153704 /* Lato-MediumItalic.ttf in Resources */,
-				A33D766122CF53ED00F0A6DC /* NewEventTableViewCell.xib in Resources */,
+				A318658C22F040DC0015A1A8 /* SlotCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,26 +510,37 @@
 				A3407B3322CB655500153704 /* GlobalPool.swift in Sources */,
 				A3407B4D22CB655500153704 /* ExtensionClass.swift in Sources */,
 				A3407B3722CB655500153704 /* APIServices.swift in Sources */,
+				A35C82DE22F00699000EDE60 /* EventsListModel.swift in Sources */,
+				A318658B22F040DC0015A1A8 /* SlotCell.swift in Sources */,
+				A35C82CD22EEF679000EDE60 /* CompletedEventsCell.swift in Sources */,
+				A35C82C722EEC01B000EDE60 /* EventsTableViewCell.swift in Sources */,
 				A3407B8C22CB670300153704 /* ToastCenter.swift in Sources */,
 				A33D766922D30A8700F0A6DC /* BuyInsCell.swift in Sources */,
 				A39AF65622CE01F00049F1B2 /* HomeViewController.swift in Sources */,
 				A33D766422CF77C700F0A6DC /* BuyInsTableViewCell.swift in Sources */,
 				A39AF65322CDFF840049F1B2 /* LoginModel.swift in Sources */,
 				A3407B8F22CB670300153704 /* MJPopupBackgroundView.m in Sources */,
+				A35C82D022EEFC27000EDE60 /* UpComingEventsVC.swift in Sources */,
+				A35C82DC22EF0471000EDE60 /* UserHomeModel.swift in Sources */,
+				A35C82D922EF0230000EDE60 /* BuyInsDetailCell.swift in Sources */,
 				A3407B8E22CB670300153704 /* UIViewController+MJPopupViewController.m in Sources */,
 				A39AF64E22CDF1AF0049F1B2 /* MBProgressHUD.m in Sources */,
+				A318658322F03F360015A1A8 /* SelectSlotView.swift in Sources */,
 				A3407B8B22CB670300153704 /* Toast.swift in Sources */,
 				A3407B0F22CB64A400153704 /* AppDelegate.swift in Sources */,
 				A39AF64A22CCA3040049F1B2 /* RegisterViewController.swift in Sources */,
+				A35C82E222F02021000EDE60 /* BookSeatViewController.swift in Sources */,
 				A3407B8A22CB670300153704 /* ToastView.swift in Sources */,
 				A3407B4F22CB655500153704 /* ShadowView.swift in Sources */,
 				A3407B3A22CB655500153704 /* SingleTonClass.swift in Sources */,
 				A3407B8822CB670300153704 /* Reachability.m in Sources */,
 				A3407BA622CC752100153704 /* LoginViewController.swift in Sources */,
+				A35C82E022F01209000EDE60 /* GetAllBookingsModel.swift in Sources */,
+				A35C82CA22EEEC9F000EDE60 /* CompletedEventsViewController.swift in Sources */,
 				A3407B0E22CB64A400153704 /* ViewController.swift in Sources */,
 				A3407B3422CB655500153704 /* Constants.swift in Sources */,
+				A35C82D222EEFFD3000EDE60 /* BuyInsViewController.swift in Sources */,
 				A3407B8922CB670300153704 /* ToastWindow.swift in Sources */,
-				A33D766022CF53ED00F0A6DC /* NewEventTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

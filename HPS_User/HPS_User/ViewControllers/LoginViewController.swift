@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     //MARK:- Update UI
     func updateUI(){
         for view in viewInViews{
+            TheGlobalPoolManager.cornerAndBorder(view, cornerRadius: 5, borderWidth: 1, borderColor: .borderColor)
             view.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
         }
         self.loginBtn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 3.0, opacity: 0.35 ,cornerRadius : 5)
@@ -42,7 +43,7 @@ class LoginViewController: UIViewController {
         TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.MobileNumber: self.mobileNumberTF.text!,
                                 ApiParams.Password: self.passwordTF.text!,
-                                ApiParams.UserType: User,
+                                ApiParams.UserType: USER,
                                 ApiParams.DeviceId: TheGlobalPoolManager.instanceIDTokenMessage] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.Login_User, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(self.view)

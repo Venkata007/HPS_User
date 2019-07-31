@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSlotView" customModule="HPS_User" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelBtn" destination="1ZC-2l-Qje" id="rWI-mw-Pt4"/>
+                <outlet property="tableView" destination="sRS-5Z-gpL" id="G08-Pb-lB3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="285" height="220"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When will you join the game ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe4-1W-7dv">
+                    <rect key="frame" x="10" y="10" width="224.5" height="20.5"/>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
+                    <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZC-2l-Qje">
+                    <rect key="frame" x="224" y="177" width="51" height="33"/>
+                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.78039215689999997" green="0.62352941179999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="8m3-nD-a68"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sRS-5Z-gpL">
+                    <rect key="frame" x="10" y="40.5" width="265" height="126.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fe4-1W-7dv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="C6o-bu-raD"/>
+                <constraint firstItem="1ZC-2l-Qje" firstAttribute="top" secondItem="sRS-5Z-gpL" secondAttribute="bottom" constant="10" id="P5U-v8-IU4"/>
+                <constraint firstItem="sRS-5Z-gpL" firstAttribute="leading" secondItem="fe4-1W-7dv" secondAttribute="leading" id="bSh-35-GJJ"/>
+                <constraint firstItem="fe4-1W-7dv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="by8-SM-RbB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1ZC-2l-Qje" secondAttribute="trailing" constant="10" id="cRn-8f-kiK"/>
+                <constraint firstItem="sRS-5Z-gpL" firstAttribute="trailing" secondItem="1ZC-2l-Qje" secondAttribute="trailing" id="kJF-A8-M3a"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1ZC-2l-Qje" secondAttribute="bottom" constant="10" id="tBi-D0-cEf"/>
+                <constraint firstItem="sRS-5Z-gpL" firstAttribute="top" secondItem="fe4-1W-7dv" secondAttribute="bottom" constant="10" id="ves-P9-IXN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="66.400000000000006" y="304.94752623688157"/>
+        </view>
+    </objects>
+</document>
