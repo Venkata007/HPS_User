@@ -74,7 +74,7 @@ class BookSeatViewController: UIViewController {
             let endingDate = dateFormatter.date(from: endDate)
             let modifiedDate = Calendar.current.date(byAdding: .hour, value: -3, to: endingDate!)!
             print(endDate,dateFormatter.string(from: modifiedDate),TheGlobalPoolManager.getTodayDateString())
-            let date1 = dateFormatter.date(from: TheGlobalPoolManager.getTodayDateString())
+            let date1 = dateFormatter.date(from: TheGlobalPoolManager.getTodayDateString().1)
             let date2 = dateFormatter.date(from: dateFormatter.string(from: modifiedDate))
             
             let diff = Date.daysBetween(start: date1!, end: date2!)
@@ -120,7 +120,7 @@ extension BookSeatViewController : SelectSlotDelegate{
         TheGlobalPoolManager.showProgress(self.view, title: ToastMessages.Please_Wait)
         let param = [ ApiParams.UserId: ModelClassManager.loginModel.data.userId!,
                       ApiParams.EventId: self.eventsData.eventId!,
-                      ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString(),
+                      ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString().1,
                       ApiParams.BookFromBlockedSeats: false,
                       ApiParams.UserJoinTime: self.selectedSlotDate] as [String : Any]
         

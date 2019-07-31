@@ -25,6 +25,7 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var noEventslbl: UILabel!
     @IBOutlet weak var noEventsView: UIView!
+    @IBOutlet weak var ribbonImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +35,7 @@ class EventsTableViewCell: UITableViewCell {
             TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.viewInView, corners: [.bottomLeft,.bottomRight], size: CGSize.init(width: 5, height: 0))
             TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.headerView, corners: [.topLeft,.topRight], size: CGSize.init(width: 5, height: 0))
             TheGlobalPoolManager.cornerAndBorder(self.noEventsView, cornerRadius: 0, borderWidth: 2, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
+            TheGlobalPoolManager.cornerAndBorder(self.bookBtn, cornerRadius: 20, borderWidth: 0, borderColor: .clear)
             self.noEventsView.backgroundColor = .clear
         }
     }
@@ -42,6 +44,13 @@ class EventsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func isBookBtnHigh(_ isHigh:Bool, title:String = "Booked"){
+        self.ribbonImageView.isHidden = isHigh
+        self.balanceLbl.isHidden = isHigh
+        self.balanceLbl.text = title
+        self.bookBtn.isHidden = !isHigh
     }
     
 }

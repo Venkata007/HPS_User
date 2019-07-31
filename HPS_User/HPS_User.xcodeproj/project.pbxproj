@@ -351,8 +351,7 @@
 				A39AF64C22CDF1AF0049F1B2 /* MBProgressHUD.m */,
 				A39AF64D22CDF1AF0049F1B2 /* MBProgressHUD.h */,
 			);
-			name = MBProgressHUD;
-			path = "../../../../../../Vamsi/My Projects/sports-club-hq/SportsClubHQ/Third Party/MBProgressHUD";
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

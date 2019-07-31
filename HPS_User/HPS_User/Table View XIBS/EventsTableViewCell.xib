@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,22 +103,25 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGh-pz-fI4">
-                                        <rect key="frame" x="183" y="24" width="100" height="50"/>
+                                        <rect key="frame" x="188" y="29" width="90" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="4Wz-5Q-1PO"/>
+                                            <constraint firstAttribute="height" constant="40" id="m0o-xX-W7j"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
                                         <state key="normal" title="Book">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gzN-mk-dzY" firstAttribute="leading" secondItem="wt8-3c-WpK" secondAttribute="trailing" constant="8" id="1Fi-1j-wBd"/>
-                                    <constraint firstItem="ZGh-pz-fI4" firstAttribute="width" secondItem="gzN-mk-dzY" secondAttribute="width" id="59N-YU-yds"/>
                                     <constraint firstAttribute="trailing" secondItem="gzN-mk-dzY" secondAttribute="trailing" id="MhR-gW-edC"/>
                                     <constraint firstItem="wt8-3c-WpK" firstAttribute="centerY" secondItem="gzN-mk-dzY" secondAttribute="centerY" id="Pmi-4T-zdV"/>
                                     <constraint firstItem="ZGh-pz-fI4" firstAttribute="centerX" secondItem="gzN-mk-dzY" secondAttribute="centerX" id="Vhx-pL-JFi"/>
                                     <constraint firstItem="AEj-Kq-HM3" firstAttribute="centerY" secondItem="gzN-mk-dzY" secondAttribute="centerY" id="YV6-54-z7T"/>
-                                    <constraint firstItem="ZGh-pz-fI4" firstAttribute="height" secondItem="gzN-mk-dzY" secondAttribute="height" id="dSb-fn-jab"/>
                                     <constraint firstItem="AEj-Kq-HM3" firstAttribute="centerX" secondItem="gzN-mk-dzY" secondAttribute="centerX" constant="5" id="hmt-jb-wDn"/>
                                     <constraint firstItem="ZGh-pz-fI4" firstAttribute="centerY" secondItem="gzN-mk-dzY" secondAttribute="centerY" id="sDW-g1-rTR"/>
                                 </constraints>
@@ -207,6 +210,7 @@
                 <outlet property="noEventsView" destination="f7S-Q4-hWe" id="NQY-1R-luZ"/>
                 <outlet property="noEventslbl" destination="ZKl-YG-bWL" id="fGE-Ht-bSf"/>
                 <outlet property="rewardPointsLbl" destination="yex-s9-AP8" id="gyz-Tg-jxB"/>
+                <outlet property="ribbonImageView" destination="gzN-mk-dzY" id="MOh-8o-r1c"/>
                 <outlet property="seeAllBtn" destination="zMc-rA-WJQ" id="4XH-oA-pc1"/>
                 <outlet property="statusImgView" destination="imL-w9-3zX" id="3Oo-s8-hub"/>
                 <outlet property="titleLbl" destination="UMi-fq-PBp" id="9F8-EN-Lr2"/>

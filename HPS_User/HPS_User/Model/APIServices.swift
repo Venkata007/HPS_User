@@ -76,26 +76,28 @@ class APIServices: NSObject {
     // MARK : - Patch Api hitting Model
     class func patchUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
         _ = params.printData
-        Alamofire.request(urlString,method: .patch, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
-            _ = response.printData
-            switch(response.result) {
-            case .success(_):
-                if response.result.value != nil{
-                    let dic        = response.result.value as! [String : AnyObject]
-                    let stautsCode = response.response?.statusCode
-                    let message    = dic[ApiParams.Message] as! String
-                    if (stautsCode)! >= 200 && (stautsCode)! < 300{
-                        completionHandler(response)
-                    }else{
-                        TheGlobalPoolManager.showToastView(message)
-                        TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+        ez.runThisInMainThread {
+            Alamofire.request(urlString,method: .patch, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
+                //_ = response.printData
+                switch(response.result) {
+                case .success(_):
+                    if response.result.value != nil{
+                        let dic        = response.result.value as! [String : AnyObject]
+                        let stautsCode = response.response?.statusCode
+                        let message    = dic[ApiParams.Message] as! String
+                        if (stautsCode)! >= 200 && (stautsCode)! < 300{
+                            completionHandler(response)
+                        }else{
+                            TheGlobalPoolManager.showToastView(message)
+                            TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                        }
                     }
+                    break
+                case .failure(_):
+                    TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
+                    TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
+                    break
                 }
-                break
-            case .failure(_):
-                TheGlobalPoolManager.showToastView((response.result.error?.localizedDescription)!)
-                TheGlobalPoolManager.hideProgess((ez.topMostVC?.view)!)
-                break
             }
         }
     }
@@ -103,7 +105,7 @@ class APIServices: NSObject {
     class func putUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] , completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
         _ = params.printData
         Alamofire.request(urlString,method: .put, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
-            _ = response.printData
+            //_ = response.printData
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{

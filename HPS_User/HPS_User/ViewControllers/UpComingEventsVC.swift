@@ -73,9 +73,14 @@ extension UpComingEventsVC : UITableViewDelegate,UITableViewDataSource{
 }
 extension UpComingEventsVC{
     @objc func pushingToBookSeatVC(_ btn : UIButton){
-        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
-            viewCon.eventsData = ModelClassManager.eventsListModel.events[btn.tag]
-            ez.topMostVC?.pushVC(viewCon)
+        let data = ModelClassManager.eventsListModel.events[btn.tag]
+        if TheGlobalPoolManager.getDateFromString(data.startsAt).isFuture{
+            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
+                viewCon.eventsData = ModelClassManager.eventsListModel.events[btn.tag]
+                ez.topMostVC?.pushVC(viewCon)
+            }
+        }else{
+            TheGlobalPoolManager.showToastView("Event Already started")
         }
     }
 }

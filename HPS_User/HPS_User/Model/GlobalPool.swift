@@ -34,23 +34,27 @@ class GlobalPool: NSObject {
         Toast.init(text: title, duration: 2.0).show()
     }
     func showProgress(_ view: UIView,     title: String) {
-        let loadingView = MBProgressHUD.init(view: view)
-        loadingView?.color = UIColor.white
-        loadingView?.activityIndicatorColor = #colorLiteral(red: 0.04705882353, green: 0.7137254902, blue: 0.8470588235, alpha: 1)
-        view.addSubview(loadingView!)
-        
-        loadingView?.tag = 1200
-        loadingView?.labelText = title
-        loadingView?.labelColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        loadingView?.dimBackground = true
-        loadingView?.show(true)
+        ez.runThisInMainThread {
+            let loadingView = MBProgressHUD.init(view: view)
+            loadingView?.color = UIColor.white
+            loadingView?.activityIndicatorColor = #colorLiteral(red: 0.04705882353, green: 0.7137254902, blue: 0.8470588235, alpha: 1)
+            view.addSubview(loadingView!)
+            
+            loadingView?.tag = 1200
+            loadingView?.labelText = title
+            loadingView?.labelColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            loadingView?.dimBackground = true
+            loadingView?.show(true)
+        }
     }
     func hideProgess(_ view: UIView) {
-        var loadingView = view.viewWithTag(1200) as? MBProgressHUD
-        if (loadingView != nil) {
-            loadingView?.hide(true)
-            loadingView?.removeFromSuperview()
-            loadingView = nil
+        ez.runThisInMainThread {
+            var loadingView = view.viewWithTag(1200) as? MBProgressHUD
+            if (loadingView != nil) {
+                loadingView?.hide(true)
+                loadingView?.removeFromSuperview()
+                loadingView = nil
+            }
         }
     }
     //MARK:- Store in Userdefaults
@@ -166,13 +170,20 @@ class GlobalPool: NSObject {
             self.vc.presentVC(alertController)
         }
     }
+    //MARK: - Get Date From String
+    func getDateFromString(_ dateString:String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        return date ?? Date()
+    }
     //MARK: - Get Today Date String
-    func getTodayDateString() -> String{
+    func getTodayDateString() -> (Date,String){
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
         let date24 = dateFormatter.string(from: date)
-        return date24
+        return (date,date24)
     }
     func getFormattedDate(string: String) -> String{
         let dateFormatter = DateFormatter()

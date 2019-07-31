@@ -124,27 +124,27 @@ class UserHomeUserInfo{
 }
 
 class UserHomeUpComingEventInfo{
-    var eventData:EventData!
+    var eventData:EventsData!
     var bookingData:BookingData!
     
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
-        eventData = EventData(fromJson: json["upComingEventInfo"])
+        eventData = EventsData(fromJsonOnly: json["upComingEventInfo"])
         bookingData = BookingData(fromJson: json["upComingBookingInfo"])
     }
 }
 
 class UserHomeUserLastPlayInfo{
-    var eventData:EventData!
+    var eventData:EventsData!
     var bookingData:BookingData!
     
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
-        eventData = EventData(fromJson: json["eventInfo"])
+        eventData = EventsData(fromJsonOnly: json["eventInfo"])
         bookingData = BookingData(fromJson:  json["bookingInfo"])
     }
 }
@@ -157,89 +157,6 @@ class UserHomeLastBuyInBookingInfo{
             return
         }
         bookingData = BookingData(fromJson:  json["bookingInfo"])
-    }
-}
-
-
-class EventData{
-    
-    var audit : EventsDataAudit!
-    var bookingStatus : String!
-    var bookingUserIds = [EventsDataBookingUserId]()
-    var closedById : String!
-    var closedByName : String!
-    var closedAt : String!
-    var closedAtNum : String!
-    var createdById : String!
-    var createdByName : String!
-    var createdOn : String!
-    var createdOnNum : String!
-    var endedById : String!
-    var endedByName : String!
-    var endedAt : String!
-    var endedAtNum : String!
-    var eventEndAt : String!
-    var eventEndAtNum : String!
-    var eventId : String!
-    var eventRewardPoints : Int!
-    var eventStartAt : String!
-    var eventStartAtNum : String!
-    var eventStatus : String!
-    var name : String!
-    var noOfBuyInsCreatedForTheEvent : Int!
-    var seats : EventsDataSeat!
-    var startedById : String!
-    var startedByName : String!
-    var startedAt : String!
-    var startsAt : String!
-    var startedAtNum : String!
-    var totalEventDurationHrs : Int!
-    
-    init(fromJson json: JSON){
-        
-        let auditJson = json["audit"]
-        if !auditJson.isEmpty{
-            audit = EventsDataAudit(fromJson: auditJson)
-        }
-        bookingStatus = json["bookingStatus"].string ?? ""
-        let bookingUserIdsJson = json["bookingUserIds"]
-        if !bookingUserIdsJson.isEmpty{
-            for userID in bookingUserIdsJson.dictionaryValue{
-                bookingUserIds.append(EventsDataBookingUserId(fromJson: userID))
-            }
-        }
-        closedById = json["closedById"].string ?? ""
-        closedByName = json["closedByName"].string ?? ""
-        closedById = json["closedAt"].string ?? ""
-        closedAtNum = json["closedAtNum"].string ?? ""
-        createdById = json["createdById"].string ?? ""
-        createdByName = json["createdByName"].string ?? ""
-        createdOn = json["createdOn"].string ?? ""
-        createdOnNum = json["createdOnNum"].string ?? ""
-        endedById = json["endedById"].string ?? ""
-        endedByName = json["endedByName"].string ?? ""
-        endedByName = json["endedAt"].string ?? ""
-        endedAtNum = json["endedAtNum"].string ?? ""
-        eventEndAt = json["eventEndAt"].string ?? ""
-        eventEndAtNum = json["eventEndAtNum"].string ?? ""
-        eventId = json["eventId"].string ?? ""
-        eventRewardPoints = json["eventRewardPoints"].int ?? 0
-        eventStartAt = json["eventStartAt"].string ?? ""
-        eventStartAtNum = json["eventStartAtNum"].string ?? ""
-        eventStatus = json["eventStatus"].string ?? ""
-        name = json["name"].stringValue
-        noOfBuyInsCreatedForTheEvent = json["noOfBuyInsCreatedForTheEvent"].int ?? 0
-        let seatsJson = json["seats"]
-        if !seatsJson.isEmpty{
-            seats = EventsDataSeat(fromJson: seatsJson)
-        }
-        startedById = json["startedById"].string ?? ""
-        startedByName = json["startedByName"].string ?? ""
-        startedById = json["startedAt"].string ?? ""
-        startedAtNum = json["startedAtNum"].string ?? ""
-        startsAt = json["startsAt"].string ?? ""
-        startedAt = json["startedAt"].string ?? ""
-        totalEventDurationHrs = json["totalEventDurationHrs"].int ?? 0
     }
 }
 

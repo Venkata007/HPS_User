@@ -87,26 +87,28 @@ class RegisterViewController: UIViewController {
     }
     //MARK:- Validating Referral Code
     func registerUserApiHitting(){
-        TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
-        let param = [ ApiParams.MobileNumber: self.ref_MobileNumTF.text!,
-                                ApiParams.ReferralCode: self.referralCodeTF.text!,
-                                ApiParams.Name: self.nameTF.text!,
-                                ApiParams.EmailId: self.emailIDTF.text!,
-                                ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString(),
-                                ApiParams.DeviceId: TheGlobalPoolManager.device_id,
-                                ApiParams.Password: self.passwordTF.text!] as [String : Any]
-        APIServices.patchUrlSession(urlString: ApiURls.Register_User, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(self.view)
-            print(dataResponse.json)
-            if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
-                if status == Constants.SUCCESS{
-                    ez.topMostVC?.popVC()
-                    TheGlobalPoolManager.showToastView(message)
-                }else{
-                    TheGlobalPoolManager.showToastView(message)
+        ez.runThisInMainThread {
+            TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
+            let param = [ ApiParams.MobileNumber: self.ref_MobileNumTF.text!,
+                          ApiParams.ReferralCode: self.referralCodeTF.text!,
+                          ApiParams.Name: self.nameTF.text!,
+                          ApiParams.EmailId: self.emailIDTF.text!,
+                          ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString().1,
+                          ApiParams.DeviceId: TheGlobalPoolManager.device_id,
+                          ApiParams.Password: self.passwordTF.text!] as [String : Any]
+            APIServices.patchUrlSession(urlString: ApiURls.Register_User, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+                TheGlobalPoolManager.hideProgess(self.view)
+                print(dataResponse.json)
+                if dataResponse.json.exists(){
+                    let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                    let status = dict.object(forKey: "status") as! String
+                    let message = dict.object(forKey: "message") as! String
+                    if status == Constants.SUCCESS{
+                        ez.topMostVC?.popVC()
+                        TheGlobalPoolManager.showToastView(message)
+                    }else{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
             }
         }

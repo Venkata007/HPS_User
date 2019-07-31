@@ -60,6 +60,7 @@ class EventsData{
     var eventStartAtNum : String!
     var eventStatus : String!
     var name : String!
+    var noOfBuyInsCreatedForTheEvent : Int!
     var seats : EventsDataSeat!
     var startedById : String!
     var startedByName : String!
@@ -104,6 +105,7 @@ class EventsData{
         eventStartAtNum = json.1["eventStartAtNum"].string ?? ""
         eventStatus = json.1["eventStatus"].string ?? ""
         name = json.1["name"].string ?? ""
+        noOfBuyInsCreatedForTheEvent = json.1["noOfBuyInsCreatedForTheEvent"].int ?? 0
         let seatsJson = json.1["seats"]
         if !seatsJson.isEmpty{
             seats = EventsDataSeat(fromJson: seatsJson)
@@ -116,6 +118,54 @@ class EventsData{
         endsAt = json.1["endsAt"].string ?? ""
         startedAt = json.1["startedAt"].string ?? ""
         totalEventDurationHrs = json.1["totalEventDurationHrs"].int ?? 0
+    }
+    
+    init(fromJsonOnly json: JSON){
+        
+        let auditJson = json["audit"]
+        if !auditJson.isEmpty{
+            audit = EventsDataAudit(fromJson: auditJson)
+        }
+        bookingStatus = json["bookingStatus"].string ?? ""
+        let bookingUserIdsJson = json["bookingUserIds"]
+        if !bookingUserIdsJson.isEmpty{
+            for userID in bookingUserIdsJson.dictionaryValue{
+                bookingUserIds.append(EventsDataBookingUserId(fromJson: userID))
+            }
+        }
+        closedById = json["closedById"].string ?? ""
+        closedByName = json["closedByName"].string ?? ""
+        closedById = json["closedAt"].string ?? ""
+        closedAtNum = json["closedAtNum"].string ?? ""
+        createdById = json["createdById"].string ?? ""
+        createdByName = json["createdByName"].string ?? ""
+        createdOn = json["createdOn"].string ?? ""
+        createdOnNum = json["createdOnNum"].string ?? ""
+        endsAt = json["endsAt"].string ?? ""
+        endedById = json["endedById"].string ?? ""
+        endedByName = json["endedByName"].string ?? ""
+        endedByName = json["endedAt"].string ?? ""
+        endedAtNum = json["endedAtNum"].string ?? ""
+        eventEndAt = json["eventEndAt"].string ?? ""
+        eventEndAtNum = json["eventEndAtNum"].string ?? ""
+        eventId = json["eventId"].string ?? ""
+        eventRewardPoints = json["eventRewardPoints"].int ?? 0
+        eventStartAt = json["eventStartAt"].string ?? ""
+        eventStartAtNum = json["eventStartAtNum"].string ?? ""
+        eventStatus = json["eventStatus"].string ?? ""
+        name = json["name"].stringValue
+        noOfBuyInsCreatedForTheEvent = json["noOfBuyInsCreatedForTheEvent"].int ?? 0
+        let seatsJson = json["seats"]
+        if !seatsJson.isEmpty{
+            seats = EventsDataSeat(fromJson: seatsJson)
+        }
+        startedById = json["startedById"].string ?? ""
+        startedByName = json["startedByName"].string ?? ""
+        startedById = json["startedAt"].string ?? ""
+        startedAtNum = json["startedAtNum"].string ?? ""
+        startsAt = json["startsAt"].string ?? ""
+        startedAt = json["startedAt"].string ?? ""
+        totalEventDurationHrs = json["totalEventDurationHrs"].int ?? 0
     }
 }
 

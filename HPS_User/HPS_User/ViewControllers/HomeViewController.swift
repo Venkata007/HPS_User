@@ -71,6 +71,7 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.EventsTableViewCell) as! EventsTableViewCell
             cell.balanceLbl.isHidden = true
             cell.seeAllBtn.addTarget(self, action: #selector(self.pushingToUpcomimgEventsVC(_:)), for: .touchUpInside)
+            cell.bookBtn.addTarget(self, action: #selector(self.pushingToBookSeatVC(_:)), for: .touchUpInside)
             if ModelClassManager.userHomeModel.data.upComingEventInfo == nil{
                 cell.noEventsView.isHidden = false
                 cell.headerView.isHidden = true
@@ -82,13 +83,20 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.noEventsView.isHidden = true
                 if let data = ModelClassManager.userHomeModel.data.upComingEventInfo{
                     if data.bookingData == nil{
-                        cell.balanceLbl.isHidden =  true
-                        cell.bookBtn.isHidden = false
+                        cell.isBookBtnHigh(true)
                     }else{
-                        cell.balanceLbl.isHidden =  true
-                        cell.bookBtn.isHidden = false
-                        cell.bookBtn.setTitle("Booked", for: .normal)
-                        cell.bookBtn.isEnabled = false
+                        var isUserIdContains = false
+                        for id in data.eventData.bookingUserIds{
+                            if id.userID == ModelClassManager.loginModel.data.userId!{
+                                isUserIdContains = true
+                                break;
+                            }
+                        }
+                        if isUserIdContains{
+                            cell.isBookBtnHigh(false)
+                        }else{
+                            cell.isBookBtnHigh(true)
+                        }
                     }
                     cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventData.name!)\n", attr2Text: data.eventData.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
                     cell.rewardPointsLbl.text = "\(data.eventData.eventRewardPoints!.toString)\n points"
@@ -229,6 +237,18 @@ extension HomeViewController{
     @objc func pushingToBuyInsVC(_ btn : UIButton){
         if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BuyInsViewController) as? BuyInsViewController{
             ez.topMostVC?.pushVC(viewCon)
+        }
+    }
+    @objc func pushingToBookSeatVC(_ btn : UIButton){
+        if let eventData = ModelClassManager.userHomeModel.data.upComingEventInfo{
+            if TheGlobalPoolManager.getDateFromString(eventData.eventData.startsAt).isFuture{
+                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
+                    viewCon.eventsData = eventData.eventData
+                    ez.topMostVC?.pushVC(viewCon)
+                }
+            }else{
+                TheGlobalPoolManager.showToastView("Event Already started")
+            }
         }
     }
 }

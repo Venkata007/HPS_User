@@ -58,7 +58,7 @@ class SingleTonClass: NSObject {
         TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
         let param = [ ApiParams.UserType : ApiParams.User,
                                 ApiParams.UserId: ModelClassManager.loginModel.data.userId!,
-                                ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString()] as [String : Any]
+                                ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString().1] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.User_Home, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(viewCon.view)
             if dataResponse.json.exists(){
