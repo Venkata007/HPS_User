@@ -24,6 +24,8 @@ class BuyInsTableViewCell: UITableViewCell {
     @IBOutlet weak var buyInsTextLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buyInsTitleLbl: UILabel!
+    @IBOutlet weak var noBuyInsStsLbl: UILabel!
+    @IBOutlet weak var noBuyInsView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +37,7 @@ class BuyInsTableViewCell: UITableViewCell {
         self.collectionView.register(UINib.init(nibName: "BuyInsCell", bundle: nil), forCellWithReuseIdentifier: "BuyInsCell")
         ez.runThisInMainThread {
             TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 0, borderWidth: 2, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
+            TheGlobalPoolManager.cornerAndBorder(self.noBuyInsView, cornerRadius: 0, borderWidth: 2, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
             TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.viewInView, corners: [.bottomLeft,.bottomRight], size: CGSize.init(width: 5, height: 0))
             TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.headerView, corners: [.topLeft,.topRight], size: CGSize.init(width: 5, height: 0))
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()

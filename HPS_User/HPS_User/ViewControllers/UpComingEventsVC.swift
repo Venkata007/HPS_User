@@ -48,7 +48,7 @@ extension UpComingEventsVC : UITableViewDelegate,UITableViewDataSource{
         cell.bannerImg.isHidden = true
          let data = ModelClassManager.eventsListModel.events[indexPath.row]
         cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-        cell.rewardPointsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+        cell.rewardPointsLbl.text = data.eventRewardPoints!.toString
         cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startsAt!)
         cell.contentLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Available / Total Seats\n", attr2Text: "\(data.seats.available!)/\(data.seats.total!)", attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 14, attr1FontName: .Bold, attr2FontName: .Medium)
         cell.bookBtn.tag = indexPath.row

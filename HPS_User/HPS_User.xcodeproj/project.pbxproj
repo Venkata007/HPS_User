@@ -12,6 +12,9 @@
 		A318658422F03F360015A1A8 /* SelectSlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A318658222F03F360015A1A8 /* SelectSlotView.xib */; };
 		A318658B22F040DC0015A1A8 /* SlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318658922F040DC0015A1A8 /* SlotCell.swift */; };
 		A318658C22F040DC0015A1A8 /* SlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A318658A22F040DC0015A1A8 /* SlotCell.xib */; };
+		A318658E22F1BFE40015A1A8 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318658D22F1BFE40015A1A8 /* OTPViewController.swift */; };
+		A318659022F2C83E0015A1A8 /* CompletedEventsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318658F22F2C83E0015A1A8 /* CompletedEventsInfo.swift */; };
+		A318659222F338FD0015A1A8 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318659122F338FD0015A1A8 /* ChangePasswordVC.swift */; };
 		A33D766422CF77C700F0A6DC /* BuyInsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D766222CF77C700F0A6DC /* BuyInsTableViewCell.swift */; };
 		A33D766522CF77C700F0A6DC /* BuyInsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33D766322CF77C700F0A6DC /* BuyInsTableViewCell.xib */; };
 		A33D766922D30A8700F0A6DC /* BuyInsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D766722D30A8700F0A6DC /* BuyInsCell.swift */; };
@@ -71,6 +74,9 @@
 		A318658222F03F360015A1A8 /* SelectSlotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectSlotView.xib; sourceTree = "<group>"; };
 		A318658922F040DC0015A1A8 /* SlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotCell.swift; sourceTree = "<group>"; };
 		A318658A22F040DC0015A1A8 /* SlotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotCell.xib; sourceTree = "<group>"; };
+		A318658D22F1BFE40015A1A8 /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
+		A318658F22F2C83E0015A1A8 /* CompletedEventsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventsInfo.swift; sourceTree = "<group>"; };
+		A318659122F338FD0015A1A8 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		A33D766222CF77C700F0A6DC /* BuyInsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsTableViewCell.swift; sourceTree = "<group>"; };
 		A33D766322CF77C700F0A6DC /* BuyInsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyInsTableViewCell.xib; sourceTree = "<group>"; };
 		A33D766722D30A8700F0A6DC /* BuyInsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInsCell.swift; sourceTree = "<group>"; };
@@ -243,11 +249,14 @@
 				A3407B0C22CB64A400153704 /* ViewController.swift */,
 				A3407BA522CC752100153704 /* LoginViewController.swift */,
 				A39AF64922CCA3040049F1B2 /* RegisterViewController.swift */,
+				A35C82E122F02021000EDE60 /* BookSeatViewController.swift */,
 				A39AF65522CE01F00049F1B2 /* HomeViewController.swift */,
 				A35C82CF22EEFC27000EDE60 /* UpComingEventsVC.swift */,
 				A35C82C922EEEC9F000EDE60 /* CompletedEventsViewController.swift */,
 				A35C82D122EEFFD3000EDE60 /* BuyInsViewController.swift */,
-				A35C82E122F02021000EDE60 /* BookSeatViewController.swift */,
+				A318658D22F1BFE40015A1A8 /* OTPViewController.swift */,
+				A318658F22F2C83E0015A1A8 /* CompletedEventsInfo.swift */,
+				A318659122F338FD0015A1A8 /* ChangePasswordVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -475,6 +484,7 @@
 				"${BUILT_PRODUCTS_DIR}/EZSwiftExtensions/EZSwiftExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PopOverMenu/PopOverMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -488,6 +498,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZSwiftExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopOverMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -517,11 +528,14 @@
 				A33D766922D30A8700F0A6DC /* BuyInsCell.swift in Sources */,
 				A39AF65622CE01F00049F1B2 /* HomeViewController.swift in Sources */,
 				A33D766422CF77C700F0A6DC /* BuyInsTableViewCell.swift in Sources */,
+				A318658E22F1BFE40015A1A8 /* OTPViewController.swift in Sources */,
 				A39AF65322CDFF840049F1B2 /* LoginModel.swift in Sources */,
+				A318659022F2C83E0015A1A8 /* CompletedEventsInfo.swift in Sources */,
 				A3407B8F22CB670300153704 /* MJPopupBackgroundView.m in Sources */,
 				A35C82D022EEFC27000EDE60 /* UpComingEventsVC.swift in Sources */,
 				A35C82DC22EF0471000EDE60 /* UserHomeModel.swift in Sources */,
 				A35C82D922EF0230000EDE60 /* BuyInsDetailCell.swift in Sources */,
+				A318659222F338FD0015A1A8 /* ChangePasswordVC.swift in Sources */,
 				A3407B8E22CB670300153704 /* UIViewController+MJPopupViewController.m in Sources */,
 				A39AF64E22CDF1AF0049F1B2 /* MBProgressHUD.m in Sources */,
 				A318658322F03F360015A1A8 /* SelectSlotView.swift in Sources */,

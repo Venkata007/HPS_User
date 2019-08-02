@@ -37,17 +37,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-Fd-hVv">
-                        <rect key="frame" x="255" y="8" width="35" height="14.5"/>
+                        <rect key="frame" x="265" y="8" width="35" height="14.5"/>
                         <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="hTS-CZ-7Un" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="5Ze-wk-Q66"/>
-                <constraint firstAttribute="trailing" secondItem="5nH-Fd-hVv" secondAttribute="trailing" constant="10" id="DEu-zd-r80"/>
+                <constraint firstAttribute="trailing" secondItem="5nH-Fd-hVv" secondAttribute="trailing" id="DEu-zd-r80"/>
                 <constraint firstItem="hTS-CZ-7Un" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JHA-7w-tVe"/>
                 <constraint firstItem="5nH-Fd-hVv" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="Jet-Nb-70F"/>
                 <constraint firstItem="4v4-LP-cVj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nmq-wX-fnf"/>

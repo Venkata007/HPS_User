@@ -8,6 +8,7 @@
 
 import UIKit
 import EZSwiftExtensions
+import PopOverMenu
 
 class HomeViewController: UIViewController {
 
@@ -22,6 +23,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var gamesPlayedLbl: UILabel!
     @IBOutlet weak var balanceLbl: UILabel!
     @IBOutlet weak var rewardsLlb: UILabel!
+    @IBOutlet weak var menuBtn: UIButton!
+    let popOverViewController = PopOverViewController.instantiate()
+    var menuItems = ["Redeem","Change Password","Logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +35,14 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.updateUI()
+        ez.runThisInMainThread {
+            self.updateUI()
+        }
     }
     //MARK:- Update UI
     func updateUI(){
+        self.redeemBtn.isHidden = true
+        TheGlobalPoolManager.cornerAndBorder(redeemBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         ModelClassManager.userHomeApiHitting(self) { (success, response) -> (Void) in
             if success{
                 if let data = ModelClassManager.userHomeModel.data.userInfo{
@@ -58,7 +66,40 @@ class HomeViewController: UIViewController {
         TheGlobalPoolManager.cornerAndBorder(self.imgView, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
     }
     //MARK:- IB Action Outlets
+    @IBAction func menuBtn(_ sender: UIButton) {
+        //POP MENU
+        self.popOverViewController.set(titles: self.menuItems)
+        self.popOverViewController.set(separatorStyle: .singleLine)
+        self.popOverViewController.popoverPresentationController?.sourceView = sender
+        self.popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
+        self.popOverViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        self.popOverViewController.preferredContentSize = CGSize(width: 160, height: self.menuItems.count * 45)
+        self.popOverViewController.presentationController?.delegate = self
+        ez.runThisInMainThread {
+            self.popOverViewController.completionHandler = { selectRow in
+                if selectRow == 0{
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.OTPViewController) as? OTPViewController{
+                        ez.topMostVC?.pushVC(viewCon)
+                    }
+                }else if selectRow == 1{
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.ChangePasswordVC) as? ChangePasswordVC{
+                        ez.topMostVC?.pushVC(viewCon)
+                    }
+                }else{
+                    TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to Logout?", singleAction: false, okTitle: "Yes", cancelTitle: "No") { (success) in
+                        if success!{
+                            self.logoutApiHitting()
+                        }
+                    }
+                }
+            }
+        }
+        self.present(self.popOverViewController, animated: true, completion: nil)
+    }
     @IBAction func redeemBnn(_ sender: UIButton) {
+        if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.OTPViewController) as? OTPViewController{
+            ez.topMostVC?.pushVC(viewCon)
+        }
     }
 }
 extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
@@ -78,9 +119,10 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.viewInView.isHidden = true
                 cell.statusImgView.isHidden = true
                 cell.noEventslbl.text = "No Upcoming Events"
-                cell.seeAllBtn.isEnabled = false
+                cell.seeAllBtn.isHidden = true
             }else{
                 cell.noEventsView.isHidden = true
+                cell.seeAllBtn.isHidden = false
                 if let data = ModelClassManager.userHomeModel.data.upComingEventInfo{
                     if data.bookingData == nil{
                         cell.isBookBtnHigh(true)
@@ -99,7 +141,7 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                         }
                     }
                     cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventData.name!)\n", attr2Text: data.eventData.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-                    cell.rewardPointsLbl.text = "\(data.eventData.eventRewardPoints!.toString)\n points"
+                    cell.rewardPointsLbl.text = data.eventData.eventRewardPoints!.toString
                     cell.contentLbl.attributedText =  TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Available/Total Seats\n", attr2Text: "\(data.eventData.seats.available!)/\(data.eventData.seats.total!)", attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr1Font:16 , attr2Font: 14, attr1FontName: .Bold, attr2FontName: .Bold)
                     switch data.eventData.eventStatus! {
                     case "created":
@@ -131,12 +173,13 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.viewInView.isHidden = true
                 cell.statusImgView.isHidden = true
                 cell.noEventslbl.text = "No Completed Events"
-                cell.seeAllBtn.isEnabled = false
+                cell.seeAllBtn.isHidden = true
             }else{
                 cell.noEventsView.isHidden = true
+                cell.seeAllBtn.isHidden = false
                 if let data = ModelClassManager.userHomeModel.data.userLastPlayInfo{
                     cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.bookingData.eventName!)\n", attr2Text: data.bookingData.bookingId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-                    cell.rewardPointsLbl.text = "\(data.bookingData.eventRewardPoints!.toString)\n points"
+                    cell.rewardPointsLbl.text = data.bookingData.eventRewardPoints!.toString
                     cell.contentLbl.attributedText =  TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy In's/CashOut\n", attr2Text: "₹ \(data.bookingData.totalBuyIns!)/ ₹ \(data.bookingData.cashout!)", attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), attr1Font:16 , attr2Font: 14, attr1FontName: .Bold, attr2FontName: .Bold)
                     cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.bookingData.balance!.toString)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
                     switch data.bookingData.status! {
@@ -161,22 +204,34 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: XIBNames.BuyInsTableViewCell) as! BuyInsTableViewCell
             cell.seeAllBtn.addTarget(self, action: #selector(self.pushingToBuyInsVC(_:)), for: .touchUpInside)
-            if let data = ModelClassManager.userHomeModel.data.lastBuyInBookingInfo{
-                cell.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventName!)\n", attr2Text: data.bookingId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-                cell.pointslbl.text = "\(data.eventRewardPoints!.toString)\n points"
-                cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate2(string: data.userJoinsAt!)
-                cell.buyInsLbl.text = "₹ \(data.totalBuyIns!)"
-                cell.cashOutLbl.text = "₹ \(data.cashout!)"
-                cell.totalLbl.text = "₹ \(data.balance!)"
-                if data.buyIns.count > 0{
-                    cell.collectionView.delegate = self
-                    cell.collectionView.dataSource = self
-                    cell.collectionView.reloadData()
-                    cell.buyInsTextLbl.text = "₹ \(data.totalBuyIns!)"
-                }else{
-                    cell.buyInsTextLbl.isHidden = true
-                    cell.buyInsTitleLbl.isHidden = true
-                    cell.collectionView.isHidden = true
+            if ModelClassManager.userHomeModel.data.lastBuyInBookingInfo == nil{
+                cell.headerView.isHidden = true
+                cell.viewInView.isHidden = true
+                cell.buyInsTitleLbl.isHidden = true
+                cell.buyInsTextLbl.isHidden = true
+                cell.collectionView.isHidden = true
+                cell.noBuyInsView.isHidden = false
+                cell.seeAllBtn.isHidden = true
+            }else{
+                if let data = ModelClassManager.userHomeModel.data.lastBuyInBookingInfo{
+                    cell.noBuyInsView.isHidden = true
+                    cell.seeAllBtn.isHidden = false
+                    cell.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventName!)\n", attr2Text: data.bookingId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
+                    cell.pointslbl.text = data.eventRewardPoints!.toString
+                    cell.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.userJoinsAt!)
+                    cell.buyInsLbl.text = "₹ \(data.totalBuyIns!)"
+                    cell.cashOutLbl.text = "₹ \(data.cashout!)"
+                    cell.totalLbl.text = "₹ \(data.balance!)"
+                    if data.buyIns.count > 0{
+                        cell.collectionView.delegate = self
+                        cell.collectionView.dataSource = self
+                        cell.collectionView.reloadData()
+                        cell.buyInsTextLbl.text = "₹ \(data.totalBuyIns!)"
+                    }else{
+                        cell.buyInsTextLbl.isHidden = true
+                        cell.buyInsTitleLbl.isHidden = true
+                        cell.collectionView.isHidden = true
+                    }
                 }
             }
             return cell
@@ -190,7 +245,7 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
         case 2:
              if let data = ModelClassManager.userHomeModel.data.lastBuyInBookingInfo{
                 if data.buyIns.count == 0{
-                    return 210
+                    return 190
                 }else{
                     return CGFloat(210 + (data.buyIns.count * 30))
                 }
@@ -201,6 +256,13 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
         return 180
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row != 0{
+            if (ModelClassManager.userHomeModel.data.userLastPlayInfo != nil && ModelClassManager.userHomeModel.data.lastBuyInBookingInfo != nil){
+                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.CompletedEventsInfo) as? CompletedEventsInfo{
+                    ez.topMostVC?.pushVC(viewCon)
+                }
+            }
+        }
     }
 }
 //MARK:- Collection View Delegate Methods
@@ -212,7 +274,7 @@ extension HomeViewController : UICollectionViewDataSource,UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BuyInsCell", for: indexPath as IndexPath) as! BuyInsCell
         cell.serialNoLbl.text = "\(indexPath.row + 1)."
         if let data = ModelClassManager.userHomeModel.data.lastBuyInBookingInfo{
-            cell.timeLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.buyIns[indexPath.row].createdOn!)
+            cell.timeLbl.text = TheGlobalPoolManager.getFormattedDate2(string: data.buyIns[indexPath.row].createdOn!)
             cell.amountLbl.text = "₹ \(data.buyIns[indexPath.row].amount!)"
         }
         return cell
@@ -248,6 +310,39 @@ extension HomeViewController{
                 }
             }else{
                 TheGlobalPoolManager.showToastView("Event Already started")
+            }
+        }
+    }
+}
+extension HomeViewController : UIAdaptivePresentationControllerDelegate{
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+}
+extension HomeViewController{
+    //MARK:- Logout Api Hitting
+    func logoutApiHitting(){
+        TheGlobalPoolManager.showProgress(self.view, title:ToastMessages.Please_Wait)
+        let param = [ ApiParams.ID: ModelClassManager.loginModel.data.userId!,
+                      ApiParams.UserType: USER ] as [String : Any]
+        APIServices.patchUrlSession(urlString: ApiURls.Logot, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
+            TheGlobalPoolManager.hideProgess(self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                let status = dict.object(forKey: "status") as! String
+                let message = dict.object(forKey: "message") as! String
+                if status == Constants.SUCCESS{
+                    TheGlobalPoolManager.showToastView(message)
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.LoginViewController) as? LoginViewController{
+                        TheGlobalPoolManager.logout()
+                        ez.topMostVC?.pushVC(viewCon)
+                    }
+                }else{
+                    TheGlobalPoolManager.showToastView(message)
+                }
             }
         }
     }

@@ -32,6 +32,10 @@ public  struct ViewControllerIDs {
     static let UpComingEventsVC                        = "UpComingEventsVC"
     static let BuyInsViewController                      = "BuyInsViewController"
     static let BookSeatViewController                 = "BookSeatViewController"
+    static let OTPViewController                          = "OTPViewController"
+    static let CompletedEventsInfo                     = "CompletedEventsInfo"
+    static let LoginNavigationID                           = "LoginNavigationID"
+    static let ChangePasswordVC                        = "ChangePasswordVC"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -48,6 +52,10 @@ public struct ApiURls{
     static let Get_All_Events                             = "https://home-poker-squad-hps.firebaseio.com/eventsTable/.json?auth=\(Auth_Key)"
     static let Get_All_Bookings                        = "https://home-poker-squad-hps.firebaseio.com/bookingsTable/.json?auth=\(Auth_Key)"
     static let  Book_Seat                                    = "\(SERVER_IP)/bookSeat"
+    static let Get_OTP                                        = "https://home-poker-squad-hps.firebaseio.com/usersTable/\(ModelClassManager.loginModel.data.userId!)/otp/.json?auth=\(Auth_Key)"
+    static let Generate_OTP                             = "\(SERVER_IP)/generateOTP"
+    static let Update_Password                       = "\(SERVER_IP)/updatePassword"
+    static let Logot                                             = "\(SERVER_IP)/logout"
 }
 
 // MARK : - Toast Messages
@@ -103,4 +111,6 @@ public struct ApiParams  {
     static let EventId = "eventId"
     static let BookFromBlockedSeats = "bookFromBlockedSeats"
     static let UserJoinTime = "userJoinTime"
+    static let NewPassword = "newPassword"
+    static let ID = "id"
 }

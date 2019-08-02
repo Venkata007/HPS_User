@@ -13,5 +13,6 @@ target 'HPS_User' do
     pod 'EZSwiftExtensions'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    pod 'PopOverMenu' 
 
 end

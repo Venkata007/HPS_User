@@ -52,7 +52,7 @@ class BookSeatViewController: UIViewController {
         self.dropDownImgView.image = #imageLiteral(resourceName: "DropDown").withColor(.white)
         if let data = self.eventsData{
             self.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.name!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-            self.rewardPointsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+            self.rewardPointsLbl.text = data.eventRewardPoints!.toString
             self.dateLbl.text = TheGlobalPoolManager.getFormattedDate(string: data.startsAt!)
             self.contentLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Available Seats : ", attr2Text: "\(data.seats.available!)", attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 16, attr1FontName: .Bold, attr2FontName: .Medium)
             self.balanceLbl.text = "Total Seats\n\(data.seats.total!)"
@@ -67,27 +67,7 @@ class BookSeatViewController: UIViewController {
     }
     //MARK:- IB Action Outlets
     @IBAction func selectSlotBtn(_ sender: UIButton) {
-        if let data = self.eventsData{
-            let endDate = data.endsAt!
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-            let endingDate = dateFormatter.date(from: endDate)
-            let modifiedDate = Calendar.current.date(byAdding: .hour, value: -3, to: endingDate!)!
-            print(endDate,dateFormatter.string(from: modifiedDate),TheGlobalPoolManager.getTodayDateString())
-            let date1 = dateFormatter.date(from: TheGlobalPoolManager.getTodayDateString().1)
-            let date2 = dateFormatter.date(from: dateFormatter.string(from: modifiedDate))
-            
-            let diff = Date.daysBetween(start: date1!, end: date2!)
-            print(diff)
-
-//            if date1 == date2 {
-//                TheGlobalPoolManager.showToastView("Oops!,No sloats available right now")
-//            }else if date1 > date2 {
-//                TheGlobalPoolManager.showToastView("Oops!,No sloats available right now")
-//            }else if date1 < date2 {
-//                self.selectSlotPopUpView()
-//            }
-        }
+        self.selectSlotPopUpView()
     }
     @IBAction func backBtn(_ sender: UIButton) {
         ez.topMostVC?.popVC()
@@ -108,12 +88,14 @@ extension BookSeatViewController : SelectSlotDelegate{
     //MARK: -  Select Slot Pop Up View
     func selectSlotPopUpView(){
         let viewCon = SelectSlotView(nibName: "SelectSlotView", bundle: nil)
+        viewCon.delegate = self
         viewCon.eventsData = self.eventsData
         self.presentPopupViewController(viewCon, animationType: MJPopupViewAnimationFade)
     }
     func delegateForSelectedSLot(selectedSlot: String, viewCon: SelectSlotView) {
-        self.dismissPopupViewControllerWithanimationType(MJPopupViewAnimationSlideBottomBottom)
         self.selectedSlotDate = selectedSlot
+        self.selectSlotBtn.setTitle(self.selectedSlotDate, for: .normal)
+        self.dismissPopupViewControllerWithanimationType(MJPopupViewAnimationSlideBottomBottom)
     }
     //MARK:- Book Slot
     func bookSlotApi(){
@@ -139,22 +121,5 @@ extension BookSeatViewController : SelectSlotDelegate{
                 }
             }
         }
-    }
-}
-extension Date {
-    
-    func daysBetween(date: Date) -> Int {
-        return Date.daysBetween(start: self, end: date)
-    }
-    
-    static func daysBetween(start: Date, end: Date) -> Int {
-        let calendar = Calendar.current
-        
-        // Replace the hour (time) of both dates with 00:00
-        let date1 = calendar.startOfDay(for: start)
-        let date2 = calendar.startOfDay(for: end)
-        
-        let a = calendar.dateComponents([.day], from: date1, to: date2)
-        return a.value(for: .day)!
     }
 }

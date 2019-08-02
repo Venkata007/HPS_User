@@ -16,6 +16,7 @@ class SelectSlotView: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var noSloatsLbl: UILabel!
     
     var eventsData : EventsData!
     var slotsArray: [String] = []
@@ -28,6 +29,7 @@ class SelectSlotView: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
+        self.noSloatsLbl.isHidden = true
         self.view.layer.cornerRadius = 10
         self.tableView.register(UINib(nibName: "SlotCell", bundle: nil), forCellReuseIdentifier: "SlotCell")
         tableView.tableFooterView = UIView()
@@ -50,17 +52,24 @@ class SelectSlotView: UIViewController {
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
         let date1 = formatter.date(from: start)
         let date2 = formatter.date(from: end)
-        var i = 1
+        var i = 0
         while true {
             let date = date1?.addingTimeInterval(TimeInterval(i*60*60))
             let string = formatter.string(from: date!)
-            if date! >= date2! {
+            if date! > date2! {
                 break;
             }
             i += 1
             slotsArray.append(string)
         }
         print(slotsArray)
+        if slotsArray.count == 0{
+            self.noSloatsLbl.isHidden = false
+            self.tableView.isHidden = true
+        }else{
+            self.noSloatsLbl.isHidden = true
+            self.tableView.isHidden = false
+        }
     }
     //MARK:- IB Action Outlets
     @IBAction func cancelBtn(_ sender: UIButton) {
@@ -77,6 +86,13 @@ extension SelectSlotView : UITableViewDelegate,UITableViewDataSource{
         cell.dateLbl.text = slotsArray[indexPath.row]
         tableView.rowHeight = 50
         cell.selectionStyle = .default
+        if slotsArray.count > 0{
+            self.view.frame.h = CGFloat(100 + slotsArray.count * 30)
+        }else if slotsArray.count > 5 {
+            self.view.frame.h = 350
+        }else{
+            self.view.frame.h = 140
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,7 +100,6 @@ extension SelectSlotView : UITableViewDelegate,UITableViewDataSource{
         cell.cellSelected(true)
         if delegate != nil{
             self.delegate.delegateForSelectedSLot(selectedSlot: slotsArray[indexPath.row], viewCon: self)
-            NotificationCenter.default.post(name: Notification.Name("SlotsCancelClicked"), object: nil)
         }
     }
 }

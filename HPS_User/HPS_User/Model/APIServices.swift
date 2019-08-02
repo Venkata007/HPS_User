@@ -78,7 +78,7 @@ class APIServices: NSObject {
         _ = params.printData
         ez.runThisInMainThread {
             Alamofire.request(urlString,method: .patch, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
-                //_ = response.printData
+                _ = response.printData
                 switch(response.result) {
                 case .success(_):
                     if response.result.value != nil{

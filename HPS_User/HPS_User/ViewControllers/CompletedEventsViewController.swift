@@ -45,7 +45,7 @@ extension CompletedEventsViewController : UITableViewDelegate,UITableViewDataSou
         cell.bookBtn.isHidden = true
         let data = ModelClassManager.getAllBookingsModel.bookings[indexPath.row]
         cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventName!)\n", attr2Text: data.eventId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
-        cell.rewardPointsLbl.text = "\(data.eventRewardPoints!.toString)\n points"
+        cell.rewardPointsLbl.text = data.eventRewardPoints!.toString
         cell.contentLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Buy Ins / CashOut\n", attr2Text: "₹ \(data.totalBuyIns!)/₹ \(data.cashout!)", attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: .white, attr1Font: 16, attr2Font: 14, attr1FontName: .Bold, attr2FontName: .Medium)
          cell.balanceLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("Balance \n", attr2Text: "₹ \(data.balance!)", attr1Color: .white, attr2Color: .white, attr1Font: 12, attr2Font: 14, attr1FontName: .Medium, attr2FontName: .Bold)
         switch data.status! {

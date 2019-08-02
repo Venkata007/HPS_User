@@ -66,7 +66,7 @@ class SingleTonClass: NSObject {
                 let status = dict.object(forKey: STATUS) as! String
                 let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
-                    TheGlobalPoolManager.showToastView(message)
+                    //TheGlobalPoolManager.showToastView(message)
                     self.userHomeModel = UserHomeModel.init(fromJson: dataResponse.json)
                 }else{
                     TheGlobalPoolManager.showToastView(message)
