@@ -17,17 +17,19 @@ class UpComingEventsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(getAllEventsApiHitting(_:)), name: Notification.Name(EVENT_ADDED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getAllEventsApiHitting(_:)), name: Notification.Name(EVENT_UPDATED), object: nil)
         tableView.register(UINib(nibName: XIBNames.CompletedEventsCell, bundle: nil), forCellReuseIdentifier: XIBNames.CompletedEventsCell)
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.updateUI()
+        self.updateUI(false)
     }
     //MARK:- Update UI
-    func updateUI(){
-        ModelClassManager.getAllEventsApiHitting(self) { (success, response) -> (Void) in
+    func updateUI(_ isFromNotification : Bool){
+        ModelClassManager.getAllEventsApiHitting(self, loaderStatus: isFromNotification) { (success, response) -> (Void) in
             if success{
                 self.tableView.reloadData()
             }
@@ -73,14 +75,24 @@ extension UpComingEventsVC : UITableViewDelegate,UITableViewDataSource{
 }
 extension UpComingEventsVC{
     @objc func pushingToBookSeatVC(_ btn : UIButton){
-        let data = ModelClassManager.eventsListModel.events[btn.tag]
-        if TheGlobalPoolManager.getDateFromString(data.startsAt).isFuture{
-            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
-                viewCon.eventsData = ModelClassManager.eventsListModel.events[btn.tag]
-                ez.topMostVC?.pushVC(viewCon)
+        if ModelClassManager.userHomeModel.data.userInfo.status == APPROVED{
+            let data = ModelClassManager.eventsListModel.events[btn.tag]
+            if TheGlobalPoolManager.getDateFromString(data.startsAt).isFuture{
+                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
+                    viewCon.eventsData = ModelClassManager.eventsListModel.events[btn.tag]
+                    ez.topMostVC?.pushVC(viewCon)
+                }
+            }else{
+                TheGlobalPoolManager.showToastView("Event Already started")
             }
         }else{
-            TheGlobalPoolManager.showToastView("Event Already started")
+            TheGlobalPoolManager.showAlertWith(message: "Waiting for Admin approval.Once you have approved you will get notified", singleAction: true) { (success) in
+            }
         }
+    }
+}
+extension UpComingEventsVC {
+    @objc func getAllEventsApiHitting(_ notification: Notification){
+        self.updateUI(true)
     }
 }

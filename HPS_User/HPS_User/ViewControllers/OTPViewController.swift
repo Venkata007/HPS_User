@@ -97,9 +97,9 @@ extension OTPViewController{
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
                 print(dict)
-                self.createdOn = dict["createdOn"] as? String
-                self.createdOnNum = dict["createdOnNum"] as? String
-                self.otpValue = dict["otpValue"] as? String
+                self.createdOn = dict[ApiParams.CreatedOn] as? String
+                self.createdOnNum = dict[ApiParams.CreatedOnNum] as? String
+                self.otpValue = dict[ApiParams.OtpValue] as? String
                 self.otpTF.text = self.otpValue
                 self.otpTF.defaultTextAttributes.updateValue(25.0,forKey: NSAttributedString.Key.kern.rawValue)
                 self.gettingTimerValue(self.createdOn)
@@ -119,14 +119,14 @@ extension OTPViewController{
             print(dataResponse.json)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let otpObj = dict.object(forKey: "otpObj") as! [String : AnyObject]
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
+                let otpObj = dict.object(forKey: ApiParams.OtpObj) as! [String : AnyObject]
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     TheGlobalPoolManager.showToastView(message)
-                    self.createdOn = otpObj["createdOn"] as? String
-                    self.createdOnNum = otpObj["createdOnNum"] as? String
-                    self.otpValue = otpObj["otpValue"] as? String
+                    self.createdOn = otpObj[ApiParams.CreatedOn] as? String
+                    self.createdOnNum = otpObj[ApiParams.CreatedOnNum] as? String
+                    self.otpValue = otpObj[ApiParams.OtpValue] as? String
                     self.otpTF.text = self.otpValue
                     self.otpTF.defaultTextAttributes.updateValue(25.0,forKey: NSAttributedString.Key.kern.rawValue)
                     self.gettingTimerValue(self.createdOn)

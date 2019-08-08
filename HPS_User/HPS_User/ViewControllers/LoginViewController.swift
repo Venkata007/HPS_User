@@ -49,8 +49,8 @@ class LoginViewController: UIViewController {
             TheGlobalPoolManager.hideProgess(self.view)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     TheGlobalPoolManager.showToastView(message)
                     ModelClassManager.loginModel = LoginModel.init(fromJson: dataResponse.json)

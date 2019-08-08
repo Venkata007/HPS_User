@@ -72,8 +72,8 @@ class RegisterViewController: UIViewController {
             print(dataResponse.json)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     self.referralBgView.isHidden = true
                     self.mobileNumTF.text = self.ref_MobileNumTF.text
@@ -101,8 +101,8 @@ class RegisterViewController: UIViewController {
                 print(dataResponse.json)
                 if dataResponse.json.exists(){
                     let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                    let status = dict.object(forKey: "status") as! String
-                    let message = dict.object(forKey: "message") as! String
+                    let status = dict.object(forKey: STATUS) as! String
+                    let message = dict.object(forKey: MESSAGE) as! String
                     if status == Constants.SUCCESS{
                         ez.topMostVC?.popVC()
                         TheGlobalPoolManager.showToastView(message)

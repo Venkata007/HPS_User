@@ -52,5 +52,4 @@ class EventsTableViewCell: UITableViewCell {
         self.balanceLbl.text = title
         self.bookBtn.isHidden = !isHigh
     }
-    
 }

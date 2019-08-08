@@ -43,6 +43,7 @@ class BookSeatViewController: UIViewController {
     }
     //MARK:- Update UI
     func updateUI(){
+        TheGlobalPoolManager.cornerAndBorder(self.bookSeatBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
         TheGlobalPoolManager.cornerAndBorder(self.viewInView, cornerRadius: 0, borderWidth: 1.5, borderColor: #colorLiteral(red: 0.4745098039, green: 0.9803921569, blue: 1, alpha: 0.6032748288))
         TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.viewInView, corners: [.bottomLeft,.bottomRight], size: CGSize.init(width: 5, height: 0))
         TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.headerView, corners: [.topLeft,.topRight], size: CGSize.init(width: 5, height: 0))
@@ -73,14 +74,19 @@ class BookSeatViewController: UIViewController {
         ez.topMostVC?.popVC()
     }
     @IBAction func bookSeatBtn(_ sender: UIButton) {
-        if self.selectedSlotDate != nil{
-            TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Confirm Booking \nSelected Slot : \(self.selectedSlotDate!)", singleAction: false, okTitle: "Confirm", cancelTitle: "Cancel") { (success) in
-                if success!{
-                    self.bookSlotApi()
+        if ModelClassManager.userHomeModel.data.userInfo.status == APPROVED{
+            if self.selectedSlotDate != nil{
+                TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Confirm Booking \nSelected Slot : \(self.selectedSlotDate!)", singleAction: false, okTitle: "Confirm", cancelTitle: "Cancel") { (success) in
+                    if success!{
+                        self.bookSlotApi()
+                    }
                 }
+            }else{
+                TheGlobalPoolManager.showToastView("Invalid Slot Selected")
             }
         }else{
-            TheGlobalPoolManager.showToastView("Invalid Slot Selected")
+            TheGlobalPoolManager.showAlertWith(message: "Waiting for Admin approval.Once you have approved you will get notified", singleAction: true) { (success) in
+            }
         }
     }
 }
@@ -111,8 +117,8 @@ extension BookSeatViewController : SelectSlotDelegate{
             print(dataResponse.json)
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                let status = dict.object(forKey: "status") as! String
-                let message = dict.object(forKey: "message") as! String
+                let status = dict.object(forKey: STATUS) as! String
+                let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
                     TheGlobalPoolManager.showToastView(message)
                     ez.topMostVC?.popVC()

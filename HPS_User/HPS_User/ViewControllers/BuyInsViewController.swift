@@ -21,11 +21,11 @@ class BuyInsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        self.updateUI()
+        self.updateUI(false)
     }
     //MARK:- Update UI
-    func updateUI(){
-        ModelClassManager.getAllBookingsApiHitting(self) { (success, response) -> (Void) in
+    func updateUI(_ isFromNotification : Bool){
+        ModelClassManager.getAllBookingsApiHitting(self, loaderStatus: isFromNotification) { (success, response) -> (Void) in
             if success{
                 self.tableView.reloadData()
             }
@@ -61,6 +61,9 @@ extension BuyInsViewController : UITableViewDelegate,UITableViewDataSource{
             break
         }
         if data.buyIns.count > 0{
+            cell.buyInsTextLbl.isHidden = false
+            cell.buyInsTitleLbl.isHidden = false
+            cell.collectionView.isHidden = false
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.reloadData()

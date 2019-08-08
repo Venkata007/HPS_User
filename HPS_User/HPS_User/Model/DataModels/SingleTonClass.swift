@@ -36,11 +36,15 @@ class SingleTonClass: NSObject {
     // ***** Hitting all the Apis Globally which are used for twice.
     
     //MARK:- Get All Events Api Hitting
-    func getAllEventsApiHitting(_ viewCon : UIViewController, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
-        TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+    func getAllEventsApiHitting(_ viewCon : UIViewController, loaderStatus : Bool, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
+        if !loaderStatus{
+            TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+        }
         let url = "\(ApiURls.Get_All_Events)&orderBy=%22eventStatus%22&equalTo=%22created%22"
         APIServices.getUrlSession(urlString: url, params: [:], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(viewCon.view)
+            if !loaderStatus{
+                TheGlobalPoolManager.hideProgess(viewCon.view)
+            }
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
                 ModelClassManager.eventsListModel  = EventsListModel(fromJson: JSON(dict))
@@ -49,41 +53,54 @@ class SingleTonClass: NSObject {
                 }
             }else{
                 completionHandler(false,nil)
-                TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                if !loaderStatus{
+                    TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                }
             }
         }
     }
     //MARK:- User Home Screen Api Hitting
-    func userHomeApiHitting(_ viewCon : UIViewController, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
-        TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+    func userHomeApiHitting(_ viewCon : UIViewController, loaderStatus : Bool,completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
+        if !loaderStatus{
+            TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+        }
         let param = [ ApiParams.UserType : ApiParams.User,
                                 ApiParams.UserId: ModelClassManager.loginModel.data.userId!,
                                 ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString().1] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.User_Home, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(viewCon.view)
+            if !loaderStatus{
+                TheGlobalPoolManager.hideProgess(viewCon.view)
+            }
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
                 let status = dict.object(forKey: STATUS) as! String
                 let message = dict.object(forKey: MESSAGE) as! String
                 if status == Constants.SUCCESS{
-                    //TheGlobalPoolManager.showToastView(message)
                     self.userHomeModel = UserHomeModel.init(fromJson: dataResponse.json)
                 }else{
-                    TheGlobalPoolManager.showToastView(message)
+                    if !loaderStatus{
+                        TheGlobalPoolManager.showToastView(message)
+                    }
                 }
                 completionHandler(true,dict as AnyObject)
             }else{
                 completionHandler(false,nil)
-                TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                if !loaderStatus{
+                    TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                }
             }
         }
     }
     //MARK:- Get All Bookings Api Hitting
-    func getAllBookingsApiHitting(_ viewCon : UIViewController, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
-        TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+    func getAllBookingsApiHitting(_ viewCon : UIViewController, loaderStatus : Bool, completionHandler : @escaping (_ granted:Bool, _ response:AnyObject?) -> (Void)){
+        if !loaderStatus{
+            TheGlobalPoolManager.showProgress(viewCon.view, title:ToastMessages.Please_Wait)
+        }
         let url = "\(ApiURls.Get_All_Bookings)&orderBy=%22userId%22&equalTo=%22\(ModelClassManager.loginModel.data.userId!)%22"
         APIServices.getUrlSession(urlString: url , params: [:], header: HEADER) { (dataResponse) in
-            TheGlobalPoolManager.hideProgess(viewCon.view)
+            if !loaderStatus{
+                TheGlobalPoolManager.hideProgess(viewCon.view)
+            }
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
                 print(dict)
@@ -93,7 +110,9 @@ class SingleTonClass: NSObject {
                 }
             }else{
                 completionHandler(false,nil)
-                TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                if !loaderStatus{
+                    TheGlobalPoolManager.showToastView(ToastMessages.No_Data_Available)
+                }
             }
         }
     }

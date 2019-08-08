@@ -17,15 +17,17 @@ class CompletedEventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(getAllBookingsApiHitting(_:)), name: Notification.Name(EVENT_BOOKING_UPDATED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getAllBookingsApiHitting(_:)), name: Notification.Name(EVENT_BOOKING_ADDED), object: nil)
         tableView.register(UINib(nibName: XIBNames.CompletedEventsCell, bundle: nil), forCellReuseIdentifier: XIBNames.CompletedEventsCell)
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        self.updateUI()
+        self.updateUI(false)
     }
     //MARK:- Update UI
-    func updateUI(){
-        ModelClassManager.getAllBookingsApiHitting(self) { (success, response) -> (Void) in
+    func updateUI(_ isFromNotification : Bool){
+        ModelClassManager.getAllBookingsApiHitting(self, loaderStatus: isFromNotification) { (success, response) -> (Void) in
             if success{
                 self.tableView.reloadData()
             }
@@ -68,5 +70,10 @@ extension CompletedEventsViewController : UITableViewDelegate,UITableViewDataSou
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+}
+extension CompletedEventsViewController {
+    @objc func getAllBookingsApiHitting(_ notification: Notification){
+        self.updateUI(true)
     }
 }

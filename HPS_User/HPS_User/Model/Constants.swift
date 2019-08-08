@@ -15,6 +15,12 @@ let USER_INFO          =  "user_info"
  let USER                     =  "user"
 let STATUS                 = "status"
 let MESSAGE             = "message"
+let EVENT_BOOKING_UPDATED = "event-booking-updated"
+let EVENT_BOOKING_ADDED = "event-booking-added"
+let USER_UPDATED = "user-updated"
+let EVENT_UPDATED = "event-updated"
+let EVENT_ADDED = "event-added"
+let APPROVED = "approved"
 
 public struct Constants {
     static let AppName                = "HPS_User"
@@ -113,4 +119,7 @@ public struct ApiParams  {
     static let UserJoinTime = "userJoinTime"
     static let NewPassword = "newPassword"
     static let ID = "id"
+    static let CreatedOnNum = "createdOnNum"
+    static let OtpValue = "otpValue"
+    static let OtpObj = "otpObj"
 }

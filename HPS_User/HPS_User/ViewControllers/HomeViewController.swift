@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var rewardsLlb: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
     let popOverViewController = PopOverViewController.instantiate()
-    var menuItems = ["Redeem","Change Password","Logout"]
+    var menuItems = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +33,22 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: XIBNames.EventsTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.EventsTableViewCell)
         tableView.register(UINib(nibName: XIBNames.BuyInsTableViewCell, bundle: nil), forCellReuseIdentifier: XIBNames.BuyInsTableViewCell)
         tableView.tableFooterView = UIView()
+        NotificationCenter.default.addObserver(self, selector: #selector(userHomeApiHitting(_:)), name: Notification.Name(EVENT_ADDED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userHomeApiHitting(_:)), name: Notification.Name(EVENT_UPDATED), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(userHomeApiHitting(_:)), name: Notification.Name(EVENT_BOOKING_UPDATED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userHomeApiHitting(_:)), name: Notification.Name(EVENT_BOOKING_ADDED), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userHomeApiHitting(_:)), name: Notification.Name(USER_UPDATED), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         ez.runThisInMainThread {
-            self.updateUI()
+            self.updateUI(false)
         }
     }
     //MARK:- Update UI
-    func updateUI(){
+    func updateUI(_ isFromNotification : Bool){
         self.redeemBtn.isHidden = true
         TheGlobalPoolManager.cornerAndBorder(redeemBtn, cornerRadius: 5, borderWidth: 0, borderColor: .clear)
-        ModelClassManager.userHomeApiHitting(self) { (success, response) -> (Void) in
+        ModelClassManager.userHomeApiHitting(self, loaderStatus: isFromNotification) { (success, response) -> (Void) in
             if success{
                 if let data = ModelClassManager.userHomeModel.data.userInfo{
                     let photoIDURL = NSURL(string:data.profilePicUrl)!
@@ -56,6 +61,11 @@ class HomeViewController: UIViewController {
                     self.gamesPlayedLbl.text = data.totalGamesPlayed!.toString
                     self.rewardsLlb.text = data.userRewardPoints!.toString
                     self.balanceLbl.text = "₹ \(data.userBalance!)"
+                    if data.status == APPROVED{
+                        self.menuItems = ["Redeem","Change Password","Logout"]
+                    }else{
+                        self.menuItems = ["Change Password","Logout"]
+                    }
                     self.tableView.delegate = self
                     self.tableView.dataSource = self
                     self.tableView.reloadData()
@@ -77,18 +87,34 @@ class HomeViewController: UIViewController {
         self.popOverViewController.presentationController?.delegate = self
         ez.runThisInMainThread {
             self.popOverViewController.completionHandler = { selectRow in
-                if selectRow == 0{
-                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.OTPViewController) as? OTPViewController{
-                        ez.topMostVC?.pushVC(viewCon)
-                    }
-                }else if selectRow == 1{
-                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.ChangePasswordVC) as? ChangePasswordVC{
-                        ez.topMostVC?.pushVC(viewCon)
-                    }
-                }else{
-                    TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to Logout?", singleAction: false, okTitle: "Yes", cancelTitle: "No") { (success) in
-                        if success!{
-                            self.logoutApiHitting()
+                if let data = ModelClassManager.userHomeModel.data.userInfo{
+                    if data.status == APPROVED{
+                        if selectRow == 0{
+                            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.OTPViewController) as? OTPViewController{
+                                ez.topMostVC?.pushVC(viewCon)
+                            }
+                        }else if selectRow == 1{
+                            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.ChangePasswordVC) as? ChangePasswordVC{
+                                ez.topMostVC?.pushVC(viewCon)
+                            }
+                        }else{
+                            TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to Logout?", singleAction: false, okTitle: "Yes", cancelTitle: "No") { (success) in
+                                if success!{
+                                    self.logoutApiHitting()
+                                }
+                            }
+                        }
+                    }else{
+                        if selectRow == 0{
+                            if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.OTPViewController) as? OTPViewController{
+                                ez.topMostVC?.pushVC(viewCon)
+                            }
+                        }else{
+                            TheGlobalPoolManager.showAlertWith(title: "Alert", message: "Do you want to Logout?", singleAction: false, okTitle: "Yes", cancelTitle: "No") { (success) in
+                                if success!{
+                                    self.logoutApiHitting()
+                                }
+                            }
                         }
                     }
                 }
@@ -122,6 +148,9 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.seeAllBtn.isHidden = true
             }else{
                 cell.noEventsView.isHidden = true
+                cell.headerView.isHidden = false
+                cell.viewInView.isHidden = false
+                cell.statusImgView.isHidden = false
                 cell.seeAllBtn.isHidden = false
                 if let data = ModelClassManager.userHomeModel.data.upComingEventInfo{
                     if data.bookingData == nil{
@@ -176,6 +205,9 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.seeAllBtn.isHidden = true
             }else{
                 cell.noEventsView.isHidden = true
+                cell.headerView.isHidden = false
+                cell.viewInView.isHidden = false
+                cell.statusImgView.isHidden = false
                 cell.seeAllBtn.isHidden = false
                 if let data = ModelClassManager.userHomeModel.data.userLastPlayInfo{
                     cell.bookingIDLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.bookingData.eventName!)\n", attr2Text: data.bookingData.bookingId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
@@ -214,6 +246,11 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
                 cell.seeAllBtn.isHidden = true
             }else{
                 if let data = ModelClassManager.userHomeModel.data.lastBuyInBookingInfo{
+                    cell.headerView.isHidden = false
+                    cell.viewInView.isHidden = false
+                    cell.buyInsTitleLbl.isHidden = false
+                    cell.buyInsTextLbl.isHidden = false
+                    cell.collectionView.isHidden = false
                     cell.noBuyInsView.isHidden = true
                     cell.seeAllBtn.isHidden = false
                     cell.eventNameLbl.attributedText = TheGlobalPoolManager.attributedTextWithTwoDifferentTextsWithFont("\(data.eventName!)\n", attr2Text: data.bookingId!, attr1Color: #colorLiteral(red: 0.7803921569, green: 0.6235294118, blue: 0, alpha: 1), attr2Color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), attr1Font: 16, attr2Font: 10, attr1FontName: .Bold, attr2FontName: .Medium)
@@ -302,14 +339,19 @@ extension HomeViewController{
         }
     }
     @objc func pushingToBookSeatVC(_ btn : UIButton){
-        if let eventData = ModelClassManager.userHomeModel.data.upComingEventInfo{
-            if TheGlobalPoolManager.getDateFromString(eventData.eventData.startsAt).isFuture{
-                if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
-                    viewCon.eventsData = eventData.eventData
-                    ez.topMostVC?.pushVC(viewCon)
+        if ModelClassManager.userHomeModel.data.userInfo.status == APPROVED{
+            if let eventData = ModelClassManager.userHomeModel.data.upComingEventInfo{
+                if TheGlobalPoolManager.getDateFromString(eventData.eventData.startsAt).isFuture{
+                    if let viewCon = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIDs.BookSeatViewController) as? BookSeatViewController{
+                        viewCon.eventsData = eventData.eventData
+                        ez.topMostVC?.pushVC(viewCon)
+                    }
+                }else{
+                    TheGlobalPoolManager.showToastView("Event Already started")
                 }
-            }else{
-                TheGlobalPoolManager.showToastView("Event Already started")
+            }
+        }else{
+            TheGlobalPoolManager.showAlertWith(message: "Waiting for Admin approval.Once you have approved you will get notified", singleAction: true) { (success) in
             }
         }
     }
@@ -345,5 +387,10 @@ extension HomeViewController{
                 }
             }
         }
+    }
+}
+extension HomeViewController {
+    @objc func userHomeApiHitting(_ notification: Notification){
+        self.updateUI(true)
     }
 }

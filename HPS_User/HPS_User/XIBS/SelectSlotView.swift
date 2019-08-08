@@ -17,10 +17,12 @@ class SelectSlotView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var noSloatsLbl: UILabel!
+    @IBOutlet weak var continueBtn: UIButton!
     
     var eventsData : EventsData!
     var slotsArray: [String] = []
     var delegate : SelectSlotDelegate!
+    var selectedSlot : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,15 @@ class SelectSlotView: UIViewController {
     @IBAction func cancelBtn(_ sender: UIButton) {
         NotificationCenter.default.post(name: Notification.Name("SlotsCancelClicked"), object: nil)
     }
+    @IBAction func continueBtn(_ sender: UIButton) {
+        if self.selectedSlot != nil{
+            if delegate != nil{
+                self.delegate.delegateForSelectedSLot(selectedSlot:self.selectedSlot , viewCon: self)
+            }
+        }else{
+            TheGlobalPoolManager.showToastView("Please select atleast any one of the slots")
+        }
+    }
 }
 // MARK : - Table View Methods
 extension SelectSlotView : UITableViewDelegate,UITableViewDataSource{
@@ -98,8 +109,6 @@ extension SelectSlotView : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SlotCell
         cell.cellSelected(true)
-        if delegate != nil{
-            self.delegate.delegateForSelectedSLot(selectedSlot: slotsArray[indexPath.row], viewCon: self)
-        }
+        self.selectedSlot = self.slotsArray[indexPath.row]
     }
 }
