@@ -47,41 +47,41 @@ enum AppCheck : String{
     }
 }
 
-let SERVER_IP            = TheGlobalPoolManager.appCheck.SERVER_IP
+let SERVER_IP             = TheGlobalPoolManager.appCheck.SERVER_IP
 let Auth_Key              = TheGlobalPoolManager.appCheck.Auth_Key
-let FireBase_Url         = TheGlobalPoolManager.appCheck.FireBase_Api_Base_URL
+let FireBase_Url          = TheGlobalPoolManager.appCheck.FireBase_Api_Base_URL
 
-let USER_INFO          =  "user_info"
- let USER                     =  "user"
-let STATUS                 = "status"
-let MESSAGE             = "message"
+let USER_INFO             =  "user_info"
+let USER                  =  "user"
+let STATUS                = "status"
+let MESSAGE               = "message"
 let EVENT_BOOKING_UPDATED = "event-booking-updated"
-let EVENT_BOOKING_ADDED = "event-booking-added"
-let USER_UPDATED = "user-updated"
-let EVENT_UPDATED = "event-updated"
-let EVENT_ADDED = "event-added"
-let APPROVED = "approved"
+let EVENT_BOOKING_ADDED   = "event-booking-added"
+let USER_UPDATED          = "user-updated"
+let EVENT_UPDATED         = "event-updated"
+let EVENT_ADDED           = "event-added"
+let APPROVED              = "approved"
 
 public struct Constants {
     static let AppName                = "HPS_User"
     static let TERMS_AND_SERVICES_URL = ""
     static let StoryBoardName         = "Main"
-    static let SUCCESS  = "ok"
-    static let ERROR = "error"
+    static let SUCCESS                = "ok"
+    static let ERROR                  = "error"
 }
 //MARK : - ViewController IDs
 public  struct ViewControllerIDs {
-    static let LoginViewController                       = "LoginViewController"
-    static let RegisterViewController                  = "RegisterViewController"
-    static let HomeViewController                      = "HomeViewController"
+    static let LoginViewController           = "LoginViewController"
+    static let RegisterViewController        = "RegisterViewController"
+    static let HomeViewController            = "HomeViewController"
     static let CompletedEventsViewController = "CompletedEventsViewController"
-    static let UpComingEventsVC                        = "UpComingEventsVC"
-    static let BuyInsViewController                      = "BuyInsViewController"
-    static let BookSeatViewController                 = "BookSeatViewController"
-    static let OTPViewController                          = "OTPViewController"
-    static let CompletedEventsInfo                     = "CompletedEventsInfo"
-    static let LoginNavigationID                           = "LoginNavigationID"
-    static let ChangePasswordVC                        = "ChangePasswordVC"
+    static let UpComingEventsVC              = "UpComingEventsVC"
+    static let BuyInsViewController          = "BuyInsViewController"
+    static let BookSeatViewController        = "BookSeatViewController"
+    static let OTPViewController             = "OTPViewController"
+    static let CompletedEventsInfo           = "CompletedEventsInfo"
+    static let LoginNavigationID             = "LoginNavigationID"
+    static let ChangePasswordVC              = "ChangePasswordVC"
 }
 //MARK : - Device INFO
 public struct DeviceInfo {
@@ -91,17 +91,17 @@ public struct DeviceInfo {
 }
 //MARK : - All Apis
 public struct ApiURls{
-    static let User_Referral_Verify                    = "\(SERVER_IP)/userReferralVerify"
-    static let Register_User                               = "\(SERVER_IP)/registerUser"
-    static let Login_User                                    = "\(SERVER_IP)/login"
-    static let User_Home                                   = "\(SERVER_IP)/userHome"
-    static let Get_All_Events                             = "\(FireBase_Url)/eventsTable/.json?auth=\(Auth_Key)"
-    static let Get_All_Bookings                        = "\(FireBase_Url)/bookingsTable/.json?auth=\(Auth_Key)"
-    static let  Book_Seat                                    = "\(SERVER_IP)/bookSeat"
-    static let Get_OTP                                        = "\(FireBase_Url)/usersTable/\(ModelClassManager.loginModel.data.userId!)/otp/.json?auth=\(Auth_Key)"
-    static let Generate_OTP                             = "\(SERVER_IP)/generateOTP"
-    static let Update_Password                       = "\(SERVER_IP)/updatePassword"
-    static let Logot                                             = "\(SERVER_IP)/logout"
+    static let User_Referral_Verify = "\(SERVER_IP)/userReferralVerify"
+    static let Register_User        = "\(SERVER_IP)/registerUser"
+    static let Login_User           = "\(SERVER_IP)/login"
+    static let User_Home            = "\(SERVER_IP)/userHome"
+    static let Get_All_Events       = "\(FireBase_Url)/eventsTable/.json?auth=\(Auth_Key)"
+    static let Get_All_Bookings     = "\(FireBase_Url)/bookingsTable/.json?auth=\(Auth_Key)"
+    static let  Book_Seat           = "\(SERVER_IP)/bookSeat"
+    static let Get_OTP              = "\(FireBase_Url)/usersTable/\(ModelClassManager.loginModel.data.userId!)/otp/.json?auth=\(Auth_Key)"
+    static let Generate_OTP         = "\(SERVER_IP)/generateOTP"
+    static let Update_Password      = "\(SERVER_IP)/updatePassword"
+    static let Logot                = "\(SERVER_IP)/logout"
 }
 
 // MARK : - Toast Messages
@@ -130,36 +130,36 @@ public struct ToastMessages {
     static let Invalid_Name                = "Invalid Name"
     static let Invalid_Apartmrnt           = "Please enter valid House No/Flat No"
     static let Session_Expired             = "Your session has been expired.Please login again"
-    static let Invalid_Ref_Number              = "Invalid Referral Number"
+    static let Invalid_Ref_Number          = "Invalid Referral Number"
 }
 //MARK:- XIB Names
 public struct XIBNames{
-    static let EventsTableViewCell                     =  "EventsTableViewCell"
-    static let BuyInsTableViewCell                     =  "BuyInsTableViewCell"
-    static let CompletedEventsCell                   =  "CompletedEventsCell"
-    static let BuyInsDetailCell                             = "BuyInsDetailCell"
+    static let EventsTableViewCell =  "EventsTableViewCell"
+    static let BuyInsTableViewCell =  "BuyInsTableViewCell"
+    static let CompletedEventsCell =  "CompletedEventsCell"
+    static let BuyInsDetailCell    = "BuyInsDetailCell"
 }
 //MARK:- Api Paramaters
 public struct ApiParams  {
-    static let User_Details = "userDetails"
-    static let Staus_Code   = "status"
-    static let Message      = "message"
-    static let MobileNumber = "mobileNumber"
-    static let ReferralCode = "referralCode"
-    static let Name = "name"
-    static let EmailId = "emailId"
-    static let CreatedOn = "createdOn"
-    static let DeviceId = "deviceId"
-    static let Password = "password"
-    static let UserType = "type"
-    static let User = "user"
-    static let UserId = "userId"
-    static let EventId = "eventId"
+    static let User_Details         = "userDetails"
+    static let Staus_Code           = "status"
+    static let Message              = "message"
+    static let MobileNumber         = "mobileNumber"
+    static let ReferralCode         = "referralCode"
+    static let Name                 = "name"
+    static let EmailId              = "emailId"
+    static let CreatedOn            = "createdOn"
+    static let DeviceId             = "deviceId"
+    static let Password             = "password"
+    static let UserType             = "type"
+    static let User                 = "user"
+    static let UserId               = "userId"
+    static let EventId              = "eventId"
     static let BookFromBlockedSeats = "bookFromBlockedSeats"
-    static let UserJoinTime = "userJoinTime"
-    static let NewPassword = "newPassword"
-    static let ID = "id"
-    static let CreatedOnNum = "createdOnNum"
-    static let OtpValue = "otpValue"
-    static let OtpObj = "otpObj"
+    static let UserJoinTime         = "userJoinTime"
+    static let NewPassword          = "newPassword"
+    static let ID                   = "id"
+    static let CreatedOnNum         = "createdOnNum"
+    static let OtpValue             = "otpValue"
+    static let OtpObj               = "otpObj"
 }
