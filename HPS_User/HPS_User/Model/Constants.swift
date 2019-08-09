@@ -162,4 +162,5 @@ public struct ApiParams  {
     static let CreatedOnNum         = "createdOnNum"
     static let OtpValue             = "otpValue"
     static let OtpObj               = "otpObj"
+    static let Date                   = "date"
 }

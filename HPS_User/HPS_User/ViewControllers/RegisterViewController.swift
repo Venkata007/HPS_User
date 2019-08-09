@@ -66,7 +66,8 @@ class RegisterViewController: UIViewController {
     func validatingReferralCodeApi(){
         TheGlobalPoolManager.showProgress(self.view, title: ToastMessages.Please_Wait)
         let param = [ ApiParams.MobileNumber: self.ref_MobileNumTF.text!,
-                                ApiParams.ReferralCode: self.referralCodeTF.text!] as [String : Any]
+                                ApiParams.ReferralCode: self.referralCodeTF.text!,
+                                ApiParams.Date : "09-08-2019"] as [String : Any]
         APIServices.patchUrlSession(urlString: ApiURls.User_Referral_Verify, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
             TheGlobalPoolManager.hideProgess(self.view)
             print(dataResponse.json)
@@ -95,7 +96,8 @@ class RegisterViewController: UIViewController {
                           ApiParams.EmailId: self.emailIDTF.text!,
                           ApiParams.CreatedOn: TheGlobalPoolManager.getTodayDateString().1,
                           ApiParams.DeviceId: TheGlobalPoolManager.device_id,
-                          ApiParams.Password: self.passwordTF.text!] as [String : Any]
+                          ApiParams.Password: self.passwordTF.text!,
+                          ApiParams.Date : "09-08-2019"] as [String : Any]
             APIServices.patchUrlSession(urlString: ApiURls.Register_User, params: param as [String : AnyObject], header: HEADER) { (dataResponse) in
                 TheGlobalPoolManager.hideProgess(self.view)
                 print(dataResponse.json)
