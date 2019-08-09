@@ -245,7 +245,7 @@ extension RegisterViewController  : UIImagePickerControllerDelegate,UINavigation
         return imageData
     }
     func uploadImagesToFirebase(imageData:Data, fileName:String, completionHandler:@escaping (_ response:Bool) -> ()){
-        var url = URLRequest(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/home-poker-squad-hps.appspot.com/o/\(fileName).jpg?alt=media")!)
+        var url = URLRequest(url: URL(string: "\(TheGlobalPoolManager.appCheck.FireBase_Storage_URL)/o/\(fileName).jpg?alt=media")!)
         url.httpMethod = "POST"
         let boundary = "Boundary-\(UUID().uuidString)"
         url.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")

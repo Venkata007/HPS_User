@@ -57,7 +57,6 @@ class UserHomeData{
             userLastPlayInfo = UserHomeUserLastPlayInfo(fromJson: userLastPlayInfoJson)
         }
     }
-    
 }
 
 class UserHomeUserInfo{
