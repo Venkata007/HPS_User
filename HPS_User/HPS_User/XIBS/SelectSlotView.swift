@@ -97,13 +97,13 @@ extension SelectSlotView : UITableViewDelegate,UITableViewDataSource{
         cell.dateLbl.text = slotsArray[indexPath.row]
         tableView.rowHeight = 50
         cell.selectionStyle = .default
-        if slotsArray.count > 0{
-            self.view.frame.h = CGFloat(100 + slotsArray.count * 30)
-        }else if slotsArray.count > 5 {
-            self.view.frame.h = 350
-        }else{
-            self.view.frame.h = 140
-        }
+//        if slotsArray.count > 0 && slotsArray.count < 5{
+//            self.view.frame.h = CGFloat(100 + slotsArray.count * 30)
+//        }else if slotsArray.count > 5 {
+//            self.view.frame.h = 350
+//        }else{
+//            self.view.frame.h = 140
+//        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
